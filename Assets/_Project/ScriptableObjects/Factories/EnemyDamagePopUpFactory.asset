@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c511e93030a08ae43894327e8688a07e, type: 3}
+  m_Name: EnemyDamagePopUpFactory
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 1473210122195172298, guid: 486fb4b5a1c25794db251faf27036ace, type: 3}

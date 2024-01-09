@@ -1,0 +1,564 @@
+fileFormatVersion: 2
+guid: 1483e93ab0bd42d4ea0fb10ac3697a95
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 16
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.5, y: 0.45}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 9
+    customPivotPosition: {x: 0.5, y: 0.45}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638402613278310920
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: PlayerCharacter_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 12
+      height: 18
+    spriteID: 58cf1280c4599b444927d9c1009cc79d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: PlayerCharacter_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 30
+      width: 12
+      height: 17
+    spriteID: 2650c6b03c9cc3040b829837e4a1aaa2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 30}
+  - name: PlayerCharacter_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 30
+      width: 12
+      height: 18
+    spriteID: 5de572783a3d95144a32bad90beed0d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 30}
+  - name: PlayerCharacter_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 55
+      width: 12
+      height: 17
+    spriteID: 6dc247b183581eb41880352c30466a3b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 55}
+  - name: PlayerCharacter_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 56
+      width: 12
+      height: 18
+    spriteID: 5daaf7814b0f54e4b9139b8c38f2c1f7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 56}
+  - name: PlayerCharacter_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 80
+      width: 12
+      height: 17
+    spriteID: 86e533e266c0e7940b0e72af60ab1c83
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 80}
+  - name: PlayerCharacter_Frame_6
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 29
+      width: 10
+      height: 18
+    spriteID: ff5a8ffe7c398584eae6baf5e48de7e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 29}
+  - name: PlayerCharacter_Frame_7
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 81
+      width: 10
+      height: 17
+    spriteID: 149873816ac092c4c8cbb822cce73168
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 81}
+  - name: PlayerCharacter_Frame_8
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 55
+      width: 10
+      height: 18
+    spriteID: a80a942c830c5b64b9fd24399a9f3bd1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 55}
+  - name: PlayerCharacter_Frame_9
+    originalName: 
+    pivot: {x: 0.49999997, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 106
+      width: 10
+      height: 17
+    spriteID: 95875ba9277beeb42a0a7835ebf2aef6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 106}
+  - name: PlayerCharacter_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 82
+      width: 12
+      height: 18
+    spriteID: 0c8d3f3026102f645837d0c8dca9afe2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 82}
+  - name: PlayerCharacter_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 105
+      width: 12
+      height: 17
+    spriteID: 5d6e6d3946c300f4d8b6f1ea0ff30a2b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 105}
+  - name: PlayerCharacter_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.42222223}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 4
+      width: 12
+      height: 18
+    spriteID: ed00b66f49f9a9f478bdfe210581da91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 4}
+  - name: PlayerCharacter_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.44705883}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 4
+      width: 12
+      height: 17
+    spriteID: 2a7488a8f59866b42ad25f15880ccb1c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 2125467426
+    name: PlayerCharacter
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: PlayerCharacter_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 18
+      spriteId: 58cf1280c4599b444927d9c1009cc79d
+    - name: PlayerCharacter_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 17
+      spriteId: 2650c6b03c9cc3040b829837e4a1aaa2
+    - name: PlayerCharacter_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 18
+      spriteId: 5de572783a3d95144a32bad90beed0d7
+    - name: PlayerCharacter_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 17
+      spriteId: 6dc247b183581eb41880352c30466a3b
+    - name: PlayerCharacter_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 18
+      spriteId: 5daaf7814b0f54e4b9139b8c38f2c1f7
+    - name: PlayerCharacter_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 17
+      spriteId: 86e533e266c0e7940b0e72af60ab1c83
+    - name: PlayerCharacter_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 19
+        y: 14
+        width: 10
+        height: 18
+      spriteId: ff5a8ffe7c398584eae6baf5e48de7e6
+    - name: PlayerCharacter_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 19
+        y: 14
+        width: 10
+        height: 17
+      spriteId: 149873816ac092c4c8cbb822cce73168
+    - name: PlayerCharacter_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 19
+        y: 14
+        width: 10
+        height: 18
+      spriteId: a80a942c830c5b64b9fd24399a9f3bd1
+    - name: PlayerCharacter_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 19
+        y: 14
+        width: 10
+        height: 17
+      spriteId: 95875ba9277beeb42a0a7835ebf2aef6
+    - name: PlayerCharacter_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 18
+      spriteId: 0c8d3f3026102f645837d0c8dca9afe2
+    - name: PlayerCharacter_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 17
+      spriteId: 5d6e6d3946c300f4d8b6f1ea0ff30a2b
+    - name: PlayerCharacter_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 18
+      spriteId: ed00b66f49f9a9f478bdfe210581da91
+    - name: PlayerCharacter_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 18
+        y: 14
+        width: 12
+        height: 17
+      spriteId: 2a7488a8f59866b42ad25f15880ccb1c
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 48}
