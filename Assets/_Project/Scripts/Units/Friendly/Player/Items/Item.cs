@@ -5,6 +5,7 @@ namespace Selivura
 {
     public abstract class Item : MonoBehaviour
     {
+        public Sprite Icon;
         public string DisplayName = "Item";
         public string Description = "Description";
         public int Price = 10;

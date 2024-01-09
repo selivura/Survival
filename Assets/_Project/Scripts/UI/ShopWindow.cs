@@ -22,7 +22,7 @@ namespace Selivura.UI
             _itemDescriptionText.text = item.Description;
             _itemPriceText.text = item.Price.ToString();
             DoShowAnimation();
-            //_itemImage.sprite = item.Icon;
+            _itemImage.sprite = item.Icon;
         }
         public void DoShakeAnimation()
         {

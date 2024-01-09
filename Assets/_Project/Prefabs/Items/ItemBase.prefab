@@ -44,8 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa64741f48b9574090fd2dcdfb7721f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Icon: {fileID: -8627436796243444615, guid: 1bb6cf3216acdb647b4fd5905809ea8d, type: 3}
   DisplayName: Item base
   Description: Description
+  Price: 10
+  Energy:
+    Value: 0
+    Type: 0
+    Order: 0
+  EnergyRegeneration:
+    Value: 0
+    Type: 0
+    Order: 0
+  EnergyDecay:
+    Value: 0
+    Type: 0
+    Order: 0
   MovementSpeed:
     Value: 0
     Type: 0

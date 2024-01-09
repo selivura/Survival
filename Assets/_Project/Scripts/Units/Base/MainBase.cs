@@ -13,7 +13,7 @@ namespace Selivura
         public MainBaseData BaseData;
         public delegate void OnBaseStatChangedDelegate();
         public event OnBaseStatChangedDelegate OnMatterChanged;
-        public CombatArea CombatArea;
+        public EnergyRegenArea CombatArea;
 
         public UnityEvent OnLevelUp;
         [SerializeField] private const int _playerHealing = 30;
@@ -34,7 +34,7 @@ namespace Selivura
             Initialize();
             _maxHealth = BaseData.BaseHealth;
             _currentHealth = _maxHealth;
-            CombatArea.CombatEnableRadius = BaseData.BaseCombatRadius;
+            CombatArea.Radius = BaseData.BaseCombatRadius;
         }
         public void ChangeMatter(int materiaAmount)
         {
@@ -51,7 +51,7 @@ namespace Selivura
             MatterToLevelUp += BaseData.MatterProgression;
             _maxHealth += BaseData.HealthPerLevel;
             ChangeHealth(BaseData.HealthPerLevel + Mathf.RoundToInt(_maxHealth * (RegenerationPercent / 100f)));
-            CombatArea.CombatEnableRadius += BaseData.CombatRadiusPerLevel;
+            CombatArea.Radius += BaseData.CombatRadiusPerLevel;
 
             Level++;
             OnLevelUp?.Invoke();

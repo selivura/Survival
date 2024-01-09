@@ -4,7 +4,7 @@ namespace Selivura
 {
     public class BaseCombatRangeDisplayer : MonoBehaviour
     {
-        public CombatArea Area;
+        public InfiniteEnergyArea Area;
         private void OnValidate()
         {
             OnCombatRadiusChanged();
@@ -20,7 +20,7 @@ namespace Selivura
         private void OnCombatRadiusChanged()
         {
             if (Area != null)
-                transform.localScale = new Vector3(Area.CombatEnableRadius * 2, Area.CombatEnableRadius * 2, 1);
+                transform.localScale = new Vector3(Area.Radius * 2, Area.Radius * 2, 1);
         }
     }
 }

@@ -27,9 +27,9 @@ namespace Selivura.Player
         public delegate void EnergyChangeDelegate();
         public event EnergyChangeDelegate OnEnergyChanged;
 
-        private float _lastEnergyDecayTime = 0;
+        private Timer _energyDecayTiemr = new Timer(0, 0);
         [SerializeField] private float _energyDecayCooldown = .1f;
-
+        public bool InfiniteEnergy = false;
         [Provide]
         public PlayerUnit Provide()
         {
@@ -37,9 +37,11 @@ namespace Selivura.Player
         }
         private void FixedUpdate()
         {
-            if (Time.time - _lastEnergyDecayTime > _energyDecayCooldown)
+            if (InfiniteEnergy)
+                return;
+            if (_energyDecayTiemr.Expired)
             {
-                _lastEnergyDecayTime = Time.time;
+                _energyDecayTiemr = new Timer(_energyDecayCooldown, Time.time);
                 ChangeEnergy(-EnergyDecay.Value * _energyDecayCooldown);
             }
         }

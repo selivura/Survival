@@ -20,7 +20,7 @@ namespace Selivura.Tests
             mainBase.ChangeMatter(mainBase.MatterToLevelUp);
             Assert.AreEqual(2, mainBase.Level);
             Assert.AreEqual(data.BaseHealth + data.HealthPerLevel, mainBase.MaxHealth);
-            Assert.AreEqual(data.BaseCombatRadius + data.CombatRadiusPerLevel, mainBase.CombatArea.CombatEnableRadius);
+            Assert.AreEqual(data.BaseCombatRadius + data.CombatRadiusPerLevel, mainBase.CombatArea.Radius);
             Assert.AreEqual(matterToLevelUpBefore + data.MatterProgression, mainBase.MatterToLevelUp);
         }
         [UnityTest]
@@ -39,7 +39,7 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator CombatAreaRangeDisplayerTest()
         {
-            CombatArea area = CreateCombarArea();
+            EnergyRegenArea area = CreateCombarArea();
 
             GameObject displayGO = new GameObject("Range");
 
@@ -50,16 +50,16 @@ namespace Selivura.Tests
 
             yield return null;
 
-            area.CombatEnableRadius = 25;
+            area.Radius = 25;
 
-            Assert.AreEqual(area.CombatEnableRadius * 2, rangeDisplayer.transform.localScale.x);
-            Assert.AreEqual(area.CombatEnableRadius * 2, rangeDisplayer.transform.localScale.y);
+            Assert.AreEqual(area.Radius * 2, rangeDisplayer.transform.localScale.x);
+            Assert.AreEqual(area.Radius * 2, rangeDisplayer.transform.localScale.y);
         }
-        private static CombatArea CreateCombarArea()
+        private static EnergyRegenArea CreateCombarArea()
         {
             GameObject baseGO = new GameObject("CombatArea");
             CircleCollider2D collider = baseGO.AddComponent<CircleCollider2D>();
-            CombatArea area = baseGO.AddComponent<CombatArea>();
+            EnergyRegenArea area = baseGO.AddComponent<EnergyRegenArea>();
             area.CircleCollider = collider;
             return area;
         }
@@ -67,7 +67,7 @@ namespace Selivura.Tests
         {
             GameObject baseGO = new GameObject("Base");
             MainBase mainBase = baseGO.AddComponent<MainBase>();
-            CombatArea area = CreateCombarArea();
+            EnergyRegenArea area = CreateCombarArea();
             mainBase.CombatArea = area;
             return mainBase;
         }

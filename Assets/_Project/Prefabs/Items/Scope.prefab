@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 5047482126791786871, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
+    - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: Description
       value: Increases range by 50%
       objectReference: {fileID: 0}

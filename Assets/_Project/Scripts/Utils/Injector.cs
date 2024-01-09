@@ -50,7 +50,6 @@ namespace Selivura
                 }
 
                 injectableField.SetValue(instance, resolvedInstance);
-                Debug.Log($"Injected(ÓÐÀÀÀ) {fieldType.Name} into {type.Name} ");
             }
 
             var injectableMethods = type.GetMethods(bindingFlags).Where(member => Attribute.IsDefined(member, typeof(InjectAttribute)));
@@ -67,7 +66,6 @@ namespace Selivura
                 }
 
                 injectableMethod.Invoke(instance, resolvedInstances);
-                Debug.Log($"method injected {type.Name}.{injectableMethod.Name}");
             }
         }
         object Resolve(Type type)

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Selivura
 {
+    [DefaultExecutionOrder(-500)]
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         protected static T instance;
