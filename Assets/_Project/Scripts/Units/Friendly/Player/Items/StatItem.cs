@@ -4,14 +4,14 @@ namespace Selivura
 {
     public class StatItem : Item
     {
-        public PlayerStatModifier Energy;
-        public PlayerStatModifier EnergyRegeneration;
-        public PlayerStatModifier EnergyDecay;
-        public PlayerStatModifier MovementSpeed;
-        public PlayerStatModifier AttackDamage;
-        public PlayerStatModifier AttackCooldown;
-        public PlayerStatModifier ProjectileSpeed;
-        public PlayerStatModifier AttackRange;
+        public PlayerStatModifier Energy = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier EnergyRegeneration = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier EnergyDecay = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier MovementSpeed = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier AttackDamage = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier AttackCooldown = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier ProjectileSpeed = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier AttackRange = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
         public override void OnPickup(PlayerUnit player)
         {
             base.OnPickup(player);

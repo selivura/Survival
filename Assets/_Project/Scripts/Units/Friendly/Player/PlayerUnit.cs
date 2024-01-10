@@ -11,14 +11,14 @@ namespace Selivura.Player
         public float EnergyLeft = 100;
         public float EnergyMax => Energy.Value;
 
-        public PlayerStat Energy;
-        public PlayerStat EnergyRegeneration;
-        public PlayerStat EnergyDecay;
-        public PlayerStat MovementSpeed;
-        public PlayerStat AttackDamage;
-        public PlayerStat AttackCooldown;
-        public PlayerStat ProjectileSpeed;
-        public PlayerStat AttackRange;
+        public PlayerStat Energy = new PlayerStat();
+        public PlayerStat EnergyRegeneration = new PlayerStat();
+        public PlayerStat EnergyDecay = new PlayerStat();
+        public PlayerStat MovementSpeed = new PlayerStat();
+        public PlayerStat AttackDamage = new PlayerStat();
+        public PlayerStat AttackCooldown = new PlayerStat();
+        public PlayerStat ProjectileSpeed = new PlayerStat();
+        public PlayerStat AttackRange = new PlayerStat();
         public List<Item> Inventory { get; private set; } = new List<Item>();
 
         public UnityEvent<float> OnMatterChanged;

@@ -29,7 +29,7 @@ namespace Selivura
         public static void PlayOneShotWithParameters(this AudioSource source, AudioClip clip, SoundParameters parameters)
         {
             source.pitch = Random.Range(parameters.MinPitch, parameters.MaxPitch);
-            source.volume = parameters.Volume;
+            source.volume =parameters.Volume;
             source.PlayOneShot(clip);
         }
         public static Vector2 WorldToCanvas(this Canvas canvas,

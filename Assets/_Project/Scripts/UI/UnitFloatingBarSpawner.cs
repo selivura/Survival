@@ -8,9 +8,12 @@ namespace Selivura.UI
         [SerializeField] Unit _unit;
         UnitHPFloatingBar _current;
         Camera _cam;
+        [Inject]
+        OverlayWindowsContainer _overlayWindowsContainer;
         private void Awake()
         {
             _cam = Camera.main;
+            Injector.Instance.Inject(this);
         }
         private void OnEnable()
         {
@@ -22,7 +25,7 @@ namespace Selivura.UI
         {
             if (_current)
                 return;
-            _current = _factory.CreateAndSetParent(OverlayWindowsContainer.Instance.transform);
+            _current = _factory.CreateAndSetParent(_overlayWindowsContainer.transform);
             _current.Unit = _unit;
             _current.LockTransform = transform;
             _current.Initialize();

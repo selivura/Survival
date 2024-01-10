@@ -15,13 +15,21 @@ namespace Selivura
     public interface IDependecyProvider { }
 
     [DefaultExecutionOrder(-1000)]
-    public class Injector : Singleton<Injector>
+    public class Injector : MonoBehaviour
     {
         const BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         readonly Dictionary<Type, object> registry = new Dictionary<Type, object>();
-        protected override void Awake()
+        public static Injector Instance { get; private set; }
+        protected void Awake()
         {
-            base.Awake();
+            if(Instance != null)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
 
             var providers = FindMonoBehaviours().OfType<IDependecyProvider>();
             foreach (var provider in providers)

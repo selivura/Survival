@@ -13,7 +13,7 @@ namespace Selivura
         public MainBaseData BaseData;
         public delegate void OnBaseStatChangedDelegate();
         public event OnBaseStatChangedDelegate OnMatterChanged;
-        public EnergyRegenArea CombatArea;
+        public InfiniteEnergyArea CombatArea;
 
         public UnityEvent OnLevelUp;
         [SerializeField] private const int _playerHealing = 30;
@@ -24,14 +24,20 @@ namespace Selivura
         {
             return this;
         }
-        private void OnValidate()
-        {
-            if (!CombatArea)
-                Debug.LogWarning("No combat area assigned!");
-        }
         private void Start()
         {
             Initialize();
+            if (!BaseData)
+            {
+                Debug.LogWarning($"No base data was assigned for {gameObject.name}, creating new one");
+                BaseData = new MainBaseData();
+            }
+            if(!CombatArea)
+            {
+                Debug.LogWarning($"No {CombatArea.GetType()} was assigned for {gameObject.name}, creating new one");
+                GameObject areaObject = new GameObject();
+                CombatArea = areaObject.AddComponent<InfiniteEnergyArea>();
+            }
             _maxHealth = BaseData.BaseHealth;
             _currentHealth = _maxHealth;
             CombatArea.Radius = BaseData.BaseCombatRadius;

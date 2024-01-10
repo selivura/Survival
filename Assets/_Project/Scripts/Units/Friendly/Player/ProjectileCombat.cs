@@ -5,16 +5,14 @@ namespace Selivura.Player
 {
     public class ProjectileCombat : Combat
     {
-        [SerializeField] Transform _projectilePoolContainer;
-        [SerializeField] Projectile _projectilePrefab;
-        IMoveable _movement;
+        public Transform ProjectilePoolContainer;
+        public Projectile ProjectilePrefab;
         PoolingSystem<Projectile> _pool;
         Timer _attackCooldownTimer = new Timer(0, 0);
         public bool CanAttack { get { return _attackCooldownTimer.Expired; } }
         private void Awake()
         {
-            _pool = new PoolingSystem<Projectile>(_projectilePoolContainer);
-            TryGetComponent(out _movement);
+            _pool = new PoolingSystem<Projectile>(ProjectilePoolContainer);
         }
         public override void Attack(Vector2 direction, AttackData data)
         {
@@ -29,7 +27,7 @@ namespace Selivura.Player
 
             _attackCooldownTimer = new Timer(data.AttackCooldown, Time.time);
 
-            var spawned = _pool.Get(_projectilePrefab);
+            var spawned = _pool.Get(ProjectilePrefab);
             spawned.Initialize(projectileData, direction);
             spawned.transform.position = transform.position;
             OnAttack?.Invoke();

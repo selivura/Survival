@@ -7,23 +7,78 @@ namespace Selivura
         SFX,
         BGM,
     }
-    public class AudioPlayer : Singleton<AudioPlayer>, IDependecyProvider
+    public class AudioPlayer : MonoBehaviour, IDependecyProvider
     {
         [SerializeField] AudioSource _sfxAudioSource;
         [SerializeField] AudioSource _bgmAudioSource;
+        private const string _globalVolumePlayerPrefsKey = "Global_Volume";
+        private const string _sfxVolumePlayerPrefsKey = "SFX_Volume";
+        private const string _bgmVolumePlayerPrefsKey = "BGM_Volume";
 
-        public static void PlaySound(AudioClip clip, SoundParameters parameters)
+        private float SFXVolume;
+        private float BGMVolume;
+        [Provide]
+        public AudioPlayer Provide()
+        {
+            return this;
+        }
+        protected void Awake()
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat(_globalVolumePlayerPrefsKey, 0.75f);
+            SFXVolume =PlayerPrefs.GetFloat(_sfxVolumePlayerPrefsKey, 1);
+            BGMVolume = PlayerPrefs.GetFloat(_bgmVolumePlayerPrefsKey, 1);
+        }
+        private void SaveAllCurrentParameters()
+        {
+            PlayerPrefs.SetFloat(_globalVolumePlayerPrefsKey, AudioListener.volume);
+            PlayerPrefs.SetFloat(_sfxVolumePlayerPrefsKey, SFXVolume);
+            PlayerPrefs.SetFloat(_bgmVolumePlayerPrefsKey, BGMVolume);
+        }
+        public void SetGlobalVolume(float value)
+        {
+            AudioListener.volume = value;
+            SaveAllCurrentParameters();
+        }
+        public void SetChannelVolume(float volume, SoundChannel channel)
+        {
+            switch (channel)
+            {
+                case SoundChannel.SFX:
+                    SFXVolume = volume;
+                    break;
+                case SoundChannel.BGM:
+                    BGMVolume = volume;
+                    break;
+                default:
+                    SFXVolume = volume;
+                    break;
+            }
+           SaveAllCurrentParameters();
+        }
+        public float GetChannelVolume(SoundChannel channel)
+        {
+            switch (channel)
+            {
+                case SoundChannel.SFX:
+                    return SFXVolume;
+                case SoundChannel.BGM:
+                    return BGMVolume;
+                default:
+                    return AudioListener.volume;
+            }
+        }
+        public void PlaySound(AudioClip clip, SoundParameters parameters)
         {
             switch (parameters.Channel)
             {
                 case SoundChannel.SFX:
-                    Current._sfxAudioSource.PlayOneShotWithParameters(clip, parameters);
+                    _sfxAudioSource.PlayOneShotWithParameters(clip, parameters);
                     break;
                 case SoundChannel.BGM:
-                    Current._bgmAudioSource.PlayOneShotWithParameters(clip, parameters);
+                    _bgmAudioSource.PlayOneShotWithParameters(clip, parameters);
                     break;
                 default:
-                    //Impossible... hopefully
+                    _sfxAudioSource.PlayOneShotWithParameters(clip, parameters);
                     break;
             }
         }
@@ -37,7 +92,7 @@ namespace Selivura
         public SoundParameters(SoundChannel channel, float volume, float minPitch, float maxPitch)
         {
             Channel = channel;
-            Volume = volume;
+            Volume = Mathf.Clamp01(volume);
             MinPitch = minPitch;
             MaxPitch = maxPitch;
         }

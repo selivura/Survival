@@ -1,18 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Selivura.Player
 {
     [RequireComponent(typeof(PlayerUnit))]
+    [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
         public const float NoEnergySpeedPenaltyMultiplier = .5f;
-        PlayerControlActions _inputActions;
-        public Vector2 MovementInput => _inputActions.Player.Move.ReadValue<Vector2>();
+        PlayerInput _playerInput;
         private IMoveable _movement;
         private Combat _combat;
-        public bool AttackInput => _inputActions.Player.Fire.IsPressed();
-        public bool InteractInput => _inputActions.Player.Interact.WasPressedThisFrame();
+        public Vector2 MovementInput { get; private set; }
+        public bool AttackInput { get; private set; }
+        public bool InteractInput { get; private set; }
         public Vector2 DirectionInput => Utilities.GetMouseDirection(_cam, transform.position);
 
         private PlayerUnit _playerUnit;
@@ -22,18 +24,27 @@ namespace Selivura.Player
         [SerializeField] private LayerMask _interactableLayers;
         Camera _cam;
         private List<IInteractable> _availableInteractables = new List<IInteractable>();
+
+        private PlayerControlActions _inputActions;
+        private string _moveActionName => _inputActions.Player.Move.name;
+        private string _attackActionName => _inputActions.Player.Fire.name;
+        private string _interactActionName => _inputActions.Player.Interact.name;
+        //private string _directionActionName => _inputActions.Player.Interact.name;
+
+        [Inject]
+        PauseController _pauseController;
+        private void Awake()
+        {
+            Injector.Instance.Inject(this);
+        }
         private void OnEnable()
         {
             _cam = Camera.main;
             _inputActions = new PlayerControlActions();
-            _inputActions.Enable();
+            _playerInput = GetComponent<PlayerInput>();
             _movement = GetComponent<IMoveable>();
             _combat = GetComponent<Combat>();
             _playerUnit = GetComponent<PlayerUnit>();
-        }
-        private void OnDisable()
-        {
-            _inputActions.Disable();
         }
         private void FixedUpdate()
         {
@@ -53,6 +64,12 @@ namespace Selivura.Player
         }
         private void Update()
         {
+            if (_pauseController.IsGamePaused)
+                return;
+            MovementInput = _playerInput.actions.FindAction(_moveActionName).ReadValue<Vector2>();
+            AttackInput = _playerInput.actions.FindAction(_attackActionName).IsPressed();
+            InteractInput = _playerInput.actions.FindAction(_interactActionName).WasPressedThisFrame();
+
             if (_combat != null)
                 if (AttackInput && _playerUnit.CombatEnabled)
                 {

@@ -11,11 +11,18 @@ namespace Selivura.UI
         ShopWindow _current;
         Timer _timer = new Timer(0, 0);
         [SerializeField] float _hideWindowTime = 2;
+
+        [Inject]
+        OverlayWindowsContainer _overlayWindowsContainer;
+        private void Awake()
+        {
+            Injector.Instance.Inject(this);
+        }
         public bool CanInteract(PlayerUnit interactor)
         {
             if (!_current)
             {
-                _current = Instantiate(_prefab, OverlayWindowsContainer.Instance.transform);
+                _current = Instantiate(_prefab, _overlayWindowsContainer.transform);
                 _current.Initialize(_shop.ItemPrefab);
                 _current.gameObject.AddComponent<PositionLocker>().Initialize(transform.position + _offset);
             }

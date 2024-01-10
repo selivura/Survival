@@ -4,13 +4,18 @@ using UnityEngine;
 
 namespace Selivura
 {
-    public class ItemPoolManager : Singleton<ItemPoolManager>
+    public class ItemPoolManager : MonoBehaviour, IDependecyProvider
     {
         [SerializeField] ItemList _itemList;
         List<Item> _unusedItems = new List<Item>();
-        protected override void Awake()
+
+        [Provide]
+        protected ItemPoolManager Provide()
         {
-            base.Awake();
+            return this;
+        }
+        protected void Awake()
+        {
             _unusedItems.AddRange(_itemList.Items);
         }
         public Item GetRandomUnusedItem()

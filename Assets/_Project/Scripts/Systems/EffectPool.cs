@@ -1,13 +1,18 @@
 using Selivura.ObjectPooling;
+using UnityEngine;
 
 namespace Selivura
 {
-    public class EffectPool : Singleton<EffectPool>
+    public class EffectPool : MonoBehaviour, IDependecyProvider
     {
         private PoolingSystem<Effect> _pool;
-        protected override void Awake()
+        [Provide]
+        public EffectPool Provide()
         {
-            base.Awake();
+            return this;
+        }
+        protected void Awake()
+        {
             _pool = new PoolingSystem<Effect>(transform);
         }
         public Effect GetOrCreatedEffect(Effect prefab)

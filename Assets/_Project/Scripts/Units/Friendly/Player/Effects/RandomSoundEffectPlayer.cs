@@ -9,6 +9,14 @@ namespace Selivura
         [SerializeField] float _randomPitchMax = 1.05f;
         [SerializeField] float _randomPitchMin = 0.95f;
         [SerializeField] SoundChannel _channel = SoundChannel.SFX;
+
+        [Inject]
+        AudioPlayer _audioPlayer;
+
+        private void Awake()
+        {
+            Injector.Instance.Inject(this);
+        }
         public void PlayRandomSound()
         {
             SoundParameters parameters = new SoundParameters.Builder()
@@ -17,7 +25,7 @@ namespace Selivura
                 .WithMinPitch(_randomPitchMin)
                 .WithVolume(_volume)
                 .Build();
-            AudioPlayer.PlaySound(_sounds.GetRandomElement(), parameters);
+            _audioPlayer.PlaySound(_sounds.GetRandomElement(), parameters);
         }
     }
 }

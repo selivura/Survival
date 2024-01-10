@@ -127,7 +127,7 @@ namespace Selivura
 
             _spawnedUnits.Add(spawned);
 
-            _enemySpawnTimer = new Timer(_enemySpawnCooldownSeconds, _startTime);
+            _enemySpawnTimer = new Timer(_enemySpawnCooldownSeconds, Time.time);
             _currentSpawnIndex++;
         }
 
