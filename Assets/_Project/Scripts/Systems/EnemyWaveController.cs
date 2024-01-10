@@ -2,6 +2,7 @@ using Selivura.ObjectPooling;
 using Selivura.Player;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Selivura
 {
@@ -12,35 +13,39 @@ namespace Selivura
     }
     public class EnemyWaveController : MonoBehaviour, IDependecyProvider
     {
+        [Header("Spawn limits")]
         [SerializeField] private float _minEnemySpwanRange = 15;
         [SerializeField] private float _maxEnemySpwanRange = 25;
-
         [SerializeField] private Vector2 _enemySpwanLimitation = new Vector2(50, 50);
 
-        [SerializeField] private float _peacePhaseTimeSeconds = 60;
+        [Header("Peaceful phase settings")]
+        [SerializeField] private float _peacePhaseTime = 30;
+
+        [Header("Enemy spawn settings")]
+        [SerializeField] private int _enemySpawnCooldownSeconds = 1;
         [SerializeField] private WaveData[] _waveDatas;
         private WaveData _currentWaveData;
-        [SerializeField] private int _spawnCooldownSeconds = 1;
         private PoolingSystem<Unit> _enemyPool;
-        public PhaseType CurrentPhase;
-        private float _phaseStartTime;
-        public float PhaseTimer => Time.time - _phaseStartTime;
-        public float PeacePhaseTimeLeft => _peacePhaseTimeSeconds - PhaseTimer;
-        private bool _canSpawnEnemy => Time.time - _lastEnemySpawnTime > _spawnCooldownSeconds && !_enemyLimitReached;
-        private bool _enemyLimitReached => _currentSpawnIndex >= EnemiesPerWave;
-        private float _lastEnemySpawnTime;
+
+        public PhaseType CurrentPhaseType;
+
+        private Timer _phaseTimer = new Timer(0,0);
+        public float PhaseTimeLeft => _phaseTimer.TimeLeft;
+        private Timer _enemySpawnTimer = new Timer(0, 0);
+        private bool _canSpawnEnemy => _enemySpawnTimer.Expired && !_enemyLimitReached;
+
+        private bool _enemyLimitReached => _currentSpawnIndex >= _currentWaveData.WaveEnemies.Length;
         private int _currentSpawnIndex = 0;
         private List<Unit> _spawnedUnits = new List<Unit>();
 
-        public delegate void OnPahseChangeDelegate(PhaseType type);
-        public event OnPahseChangeDelegate OnPhaseChange;
-
         private float _startTime;
         public float TotalSurvivalTime => Time.time - _startTime;
-        public int CurrentWave { get; private set; }
-        public int EnemyHealthPerWavePercent = 2;
-        public int EnemiesPerWave = 3;
-        public int _phaseIndex = 0;
+        public int CurrentWaveIndex { get; private set; }
+        public float EnemyHealthPerDifficultyMultiplier = 1.5f;
+        public int Loop { get; private set; } = 0;
+
+        public UnityEvent OnWaveStarted;
+        public UnityEvent<PhaseType> OnPhaseChange;
 
         [Inject]
         PlayerUnit _playerUnit;
@@ -61,14 +66,14 @@ namespace Selivura
         }
         private void FixedUpdate()
         {
-            if (CurrentPhase == PhaseType.Peace)
+            if (CurrentPhaseType == PhaseType.Peace)
             {
-                if (PeacePhaseTimeLeft <= 0)
+                if (_phaseTimer.Expired)
                 {
                     StartDefencePhase();
                 }
             }
-            if (CurrentPhase == PhaseType.Defence)
+            if (CurrentPhaseType == PhaseType.Defence)
             {
                 if (_canSpawnEnemy)
                     SpawnEnemy();
@@ -80,50 +85,67 @@ namespace Selivura
         }
         private void StartDefencePhase()
         {
-            _currentSpawnIndex = 0;
-            CurrentPhase = PhaseType.Defence;
-            _phaseStartTime = Time.time;
-            _currentWaveData = _waveDatas[Random.Range(0, _waveDatas.Length)];
+            CurrentPhaseType = PhaseType.Defence;
+
+            _currentSpawnIndex = 0; 
+            CurrentWaveIndex++;
+
+            if (CurrentWaveIndex >= _waveDatas.Length)
+            {
+                Loop++;
+                CurrentWaveIndex = 0;
+            }
+
+            _currentWaveData = _waveDatas[CurrentWaveIndex];
             SpawnEnemy();
-            OnPhaseChange?.Invoke(CurrentPhase);
-            _phaseIndex++;
+            OnPhaseChange?.Invoke(CurrentPhaseType);
+            OnWaveStarted?.Invoke();
+            
         }
         private void StartPeacePhase()
         {
-            CurrentPhase = PhaseType.Peace;
-            _phaseStartTime = Time.time;
-            OnPhaseChange?.Invoke(CurrentPhase);
-            if (_phaseIndex > 0)
-            {
-                EnemiesPerWave++;
-                CurrentWave++;
-            }
-            _phaseIndex++;
+            _phaseTimer = new Timer(_peacePhaseTime, Time.time);
+            CurrentPhaseType = PhaseType.Peace;
+            OnPhaseChange?.Invoke(CurrentPhaseType);
         }
         private void SpawnEnemy()
         {
             if (!_canSpawnEnemy)
                 return;
 
-            var spawned = _enemyPool.Get(_currentWaveData.WaveEnemies[Random.Range(0, _currentWaveData.WaveEnemies.Length)]);
+            var spawned = _enemyPool.Get(_currentWaveData.WaveEnemies[_currentSpawnIndex]);
 
-            var spawnPosition = Utilities.RandomPositionInRangeLimited(_playerUnit.transform.position, _minEnemySpwanRange, _maxEnemySpwanRange);
-            while (
-                spawnPosition.x > _enemySpwanLimitation.x / 2
-                || spawnPosition.y > _enemySpwanLimitation.y / 2
-                || spawnPosition.y < -_enemySpwanLimitation.y / 2
-                || spawnPosition.x < -_enemySpwanLimitation.x / 2)
-            {
-                spawnPosition = Utilities.RandomPositionInRangeLimited(_playerUnit.transform.position, _minEnemySpwanRange, _maxEnemySpwanRange);
-            }
+            Vector2 spawnPosition = GetValidSpawnPosition(
+                _playerUnit.transform.position, 
+                _enemySpwanLimitation,
+                _minEnemySpwanRange, 
+                _maxEnemySpwanRange);
+
             spawned.transform.position = spawnPosition;
-
             spawned.OnKilled.AddListener(RemoveEnemyFromList);
-            spawned.Initialize(Mathf.RoundToInt(spawned.BaseHealth * (CurrentWave * EnemyHealthPerWavePercent / 100f)));
+            spawned.Initialize(Mathf.RoundToInt(spawned.BaseHealth * (Loop * EnemyHealthPerDifficultyMultiplier)));
+
             _spawnedUnits.Add(spawned);
-            _lastEnemySpawnTime = Time.time;
+
+            _enemySpawnTimer = new Timer(_enemySpawnCooldownSeconds, _startTime);
             _currentSpawnIndex++;
         }
+
+        private Vector2 GetValidSpawnPosition(Vector2 position, Vector2 limit, float minRange, float maxRange)
+        {
+            var spawnPosition = Utilities.RandomPositionInRangeLimited(position, minRange, maxRange);
+            while (
+                spawnPosition.x > limit.x / 2
+                || spawnPosition.y > limit.y / 2
+                || spawnPosition.y < -limit.y / 2
+                || spawnPosition.x < -limit.x / 2)
+            {
+                spawnPosition = Utilities.RandomPositionInRangeLimited(position, minRange, maxRange);
+            }
+
+            return spawnPosition;
+        }
+
         private void RemoveEnemyFromList(Unit unit)
         {
             _spawnedUnits.Remove(unit);

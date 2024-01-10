@@ -46,7 +46,7 @@ namespace Selivura
                 var resolvedInstance = Resolve(fieldType);
                 if (resolvedInstance == null)
                 {
-                    throw new Exception($"Failed to inject (HOW) {fieldType.Name} int {type.Name}");
+                    throw new Exception($"Failed to inject (BRUH) {fieldType.Name} int {type.Name}");
                 }
 
                 injectableField.SetValue(instance, resolvedInstance);
@@ -91,7 +91,6 @@ namespace Selivura
                 if (providedInstance != null)
                 {
                     registry.Add(returnType, providedInstance);
-                    Debug.Log($"Registered {returnType.Name} from {provider.GetType().Name}");
                 }
                 else
                 {

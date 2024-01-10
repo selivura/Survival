@@ -15,11 +15,11 @@ namespace Selivura
         {
             _matterPool = new PoolingSystem<MatterCollectible>(transform);
             _waveController = FindAnyObjectByType<EnemyWaveController>();
-            _waveController.OnPhaseChange += OnPhaseChange;
+            _waveController.OnPhaseChange.AddListener(OnPhaseChange);
         }
         private void OnDestroy()
         {
-            _waveController.OnPhaseChange -= OnPhaseChange;
+            _waveController.OnPhaseChange.RemoveListener(OnPhaseChange);
         }
         private void Spawn()
         {

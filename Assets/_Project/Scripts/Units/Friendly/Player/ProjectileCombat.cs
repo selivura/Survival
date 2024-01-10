@@ -7,12 +7,14 @@ namespace Selivura.Player
     {
         [SerializeField] Transform _projectilePoolContainer;
         [SerializeField] Projectile _projectilePrefab;
+        IMoveable _movement;
         PoolingSystem<Projectile> _pool;
         Timer _attackCooldownTimer = new Timer(0, 0);
         public bool CanAttack { get { return _attackCooldownTimer.Expired; } }
         private void Awake()
         {
             _pool = new PoolingSystem<Projectile>(_projectilePoolContainer);
+            TryGetComponent(out _movement);
         }
         public override void Attack(Vector2 direction, AttackData data)
         {

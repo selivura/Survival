@@ -13,7 +13,8 @@ namespace Selivura.UI
                 Debug.LogError("No EnemyWaveController assigned");
                 return;
             }
-            tmpText.text = prefix + TimeSpan.FromSeconds(_enemyWaveController.TotalSurvivalTime).ToString(@"hh\:mm\:ss") + "\nWaves: " + _enemyWaveController.CurrentWave;
+            tmpText.text = prefix + TimeSpan.FromSeconds(_enemyWaveController.TotalSurvivalTime).ToString(@"hh\:mm\:ss")
+                + "\nWaves: " + _enemyWaveController.CurrentWaveIndex + 1;
         }
     }
 }

@@ -20,9 +20,12 @@ namespace Selivura
         }
         private void OnEnable()
         {
-            _enemyWaveController.OnPhaseChange += OnPhaseChange;
+            _enemyWaveController.OnPhaseChange.AddListener(OnPhaseChange);
         }
-
+        private void OnDisable()
+        {
+            _enemyWaveController.OnPhaseChange.RemoveListener(OnPhaseChange);
+        }
         private void OnPhaseChange(PhaseType type)
         {
             if (type == PhaseType.Peace)

@@ -11,14 +11,14 @@ namespace Selivura.UI
         }
         private void FixedUpdate()
         {
-            if (_waveController.CurrentPhase == PhaseType.Peace)
+            if (_waveController.CurrentPhaseType == PhaseType.Peace)
             {
-                var time = TimeSpan.FromSeconds(_waveController.PeacePhaseTimeLeft);
+                var time = TimeSpan.FromSeconds(_waveController.PhaseTimeLeft);
                 tmpText.text = "Next wave in: \n" + time.ToString(@"mm\:ss\:ff");
             }
             else
             {
-                tmpText.text = "Wave " + _waveController.CurrentWave;
+                tmpText.text = "Wave " + _waveController.CurrentWaveIndex + 1;
             }
         }
     }

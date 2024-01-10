@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace Selivura
 {
+    [System.Serializable]
     public class Timer
     {
-        public float TimeLeft;
+        public float TimeLeft => _timerDuration - (Time.time - _startTime);
         private float _startTime;
         private float _timerDuration;
         public bool Expired => Time.time - _startTime >= _timerDuration;

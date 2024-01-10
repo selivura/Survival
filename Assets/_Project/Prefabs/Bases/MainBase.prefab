@@ -337,6 +337,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8135547139838436247, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7347410855459916317}
+    - targetCorrespondingSourceObject: {fileID: 8135547139838436247, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1001221544450361052}
   m_SourcePrefab: {fileID: 100100000, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
 --- !u!1 &1727470177876988189 stripped
 GameObject:
@@ -436,6 +439,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1001221544450361052}
+        m_TargetAssemblyTypeName: Selivura.EffectSpawner, Scripts
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1001221544450361052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727470177876988189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f08b63d100b114f9ec964db141467d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 170414543142375513, guid: 76c363855b86b1e40bdffcaae033a63b, type: 3}
 --- !u!114 &4774616214746764001 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2692213431452213355, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
