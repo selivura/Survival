@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Selivura
 {
-    public class MainBase : FriendlyBase, IInteractable, IDependecyProvider
+    public class MainBase : Unit, IInteractable, IDependecyProvider
     {
         public int Matter = 0;
         public int Level = 1;
@@ -13,7 +13,7 @@ namespace Selivura
         public MainBaseData BaseData;
         public delegate void OnBaseStatChangedDelegate();
         public event OnBaseStatChangedDelegate OnMatterChanged;
-        public InfiniteEnergyArea CombatArea;
+        public Area Area;
 
         public UnityEvent OnLevelUp;
         [SerializeField] private const int _playerHealing = 30;
@@ -32,15 +32,15 @@ namespace Selivura
                 Debug.LogWarning($"No base data was assigned for {gameObject.name}, creating new one");
                 BaseData = new MainBaseData();
             }
-            if(!CombatArea)
+            if(!Area)
             {
-                Debug.LogWarning($"No {CombatArea.GetType()} was assigned for {gameObject.name}, creating new one");
+                Debug.LogWarning($"No {Area.GetType()} was assigned for {gameObject.name}, creating new one");
                 GameObject areaObject = new GameObject();
-                CombatArea = areaObject.AddComponent<InfiniteEnergyArea>();
+                Area = areaObject.AddComponent<InfiniteEnergyArea>();
             }
             _maxHealth = BaseData.BaseHealth;
             _currentHealth = _maxHealth;
-            CombatArea.Radius = BaseData.BaseCombatRadius;
+            Area.Radius = BaseData.BaseCombatRadius;
         }
         public void ChangeMatter(int materiaAmount)
         {
@@ -57,7 +57,7 @@ namespace Selivura
             MatterToLevelUp += BaseData.MatterProgression;
             _maxHealth += BaseData.HealthPerLevel;
             ChangeHealth(BaseData.HealthPerLevel + Mathf.RoundToInt(_maxHealth * (RegenerationPercent / 100f)));
-            CombatArea.Radius += BaseData.CombatRadiusPerLevel;
+            Area.Radius += BaseData.CombatRadiusPerLevel;
 
             Level++;
             OnLevelUp?.Invoke();

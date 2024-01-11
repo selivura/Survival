@@ -1,3 +1,4 @@
+using Selivura.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,8 +6,11 @@ namespace Selivura
 {
     public class GameRestarter : MonoBehaviour
     {
-        [SerializeField] FriendlyBase _base;
-        [SerializeField] Unit _player;
+        [Inject]
+        MainBase _base;
+        [Inject]
+        PlayerUnit _player;
+
         [SerializeField] GameObject GameOverScreen;
         private void Awake()
         {

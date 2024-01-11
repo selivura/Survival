@@ -11,7 +11,7 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator MovementTest()
         {
-            PrimitiveMovement testObject = new GameObject("movement").AddComponent<PrimitiveMovement>();
+            RigidbodyMovement testObject = new GameObject("movement").AddComponent<RigidbodyMovement>();
             testObject.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             testObject.Move(Vector2.right, 1);
 

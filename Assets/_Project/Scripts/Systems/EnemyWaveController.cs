@@ -11,7 +11,7 @@ namespace Selivura
         Peace,
         Defence,
     }
-    public class EnemyWaveController : MonoBehaviour, IDependecyProvider
+    public class EnemyWaveController : UnitSpawner, IDependecyProvider
     {
         [Header("Spawn limits")]
         [SerializeField] private float _minEnemySpwanRange = 15;
@@ -25,7 +25,6 @@ namespace Selivura
         [SerializeField] private int _enemySpawnCooldownSeconds = 1;
         [SerializeField] private WaveData[] _waveDatas;
         private WaveData _currentWaveData;
-        private PoolingSystem<Unit> _enemyPool;
 
         public PhaseType CurrentPhaseType;
 
@@ -54,10 +53,6 @@ namespace Selivura
         public EnemyWaveController Provide()
         {
             return this;
-        }
-        private void Awake()
-        {
-            _enemyPool = new PoolingSystem<Unit>(transform);
         }
         private void Start()
         {
@@ -113,13 +108,13 @@ namespace Selivura
             if (!_canSpawnEnemy)
                 return;
 
-            var spawned = _enemyPool.Get(_currentWaveData.WaveEnemies[_currentSpawnIndex]);
-
             Vector2 spawnPosition = GetValidSpawnPosition(
-                _playerUnit.transform.position, 
+                _playerUnit.transform.position,
                 _enemySpwanLimitation,
-                _minEnemySpwanRange, 
+                _minEnemySpwanRange,
                 _maxEnemySpwanRange);
+
+            var spawned = Spawn(_currentWaveData.WaveEnemies[_currentSpawnIndex], spawnPosition);
 
             spawned.transform.position = spawnPosition;
             spawned.OnKilled.AddListener(RemoveEnemyFromList);
@@ -130,7 +125,6 @@ namespace Selivura
             _enemySpawnTimer = new Timer(_enemySpawnCooldownSeconds, Time.time);
             _currentSpawnIndex++;
         }
-
         private Vector2 GetValidSpawnPosition(Vector2 position, Vector2 limit, float minRange, float maxRange)
         {
             var spawnPosition = Utilities.RandomPositionInRangeLimited(position, minRange, maxRange);

@@ -5,14 +5,14 @@ namespace Selivura
     [RequireComponent(typeof(TrailRenderer))]
     public class TrailCleaner : MonoBehaviour
     {
-        TrailRenderer trailRenderer;
+        private TrailRenderer _trailRenderer;
         private void Awake()
         {
-            trailRenderer = GetComponent<TrailRenderer>();
+            _trailRenderer = GetComponent<TrailRenderer>();
         }
         void OnDisable()
         {
-            trailRenderer.Clear();
+            _trailRenderer.Clear();
         }
     }
 }

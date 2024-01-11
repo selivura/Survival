@@ -16,7 +16,7 @@ namespace Selivura
 
         public bool CanSearchForTarget { get { return Time.time - _lastSearchTime > _targetSearchCooldown; } }
         public bool CanAttack { get { return Time.time - _lastAttackTime > _attackCooldown; } }
-        FriendlyUnit _target;
+        Unit _target;
         IMoveable _movement;
         private void Awake()
         {
@@ -47,7 +47,7 @@ namespace Selivura
             _lastAttackTime = Time.time;
         }
 
-        public void SetTarget(FriendlyUnit target)
+        public void SetTarget(Unit target)
         {
             _target = target;
         }
@@ -73,7 +73,7 @@ namespace Selivura
                     nearestDistance = distance;
                 }
             }
-            if (nearestTarget.TryGetComponent(out FriendlyUnit target))
+            if (nearestTarget.TryGetComponent(out Unit target))
                 SetTarget(target);
             else
                 SetTarget(null);

@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 namespace Selivura
 {
+    [RequireComponent(typeof(IMoveable))]
     public class Projectile : MonoBehaviour
     {
         [SerializeField] ProjectileData _data;

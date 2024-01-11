@@ -26,7 +26,7 @@ namespace Selivura.Tests
 
             Effect effect = new GameObject("effect").AddComponent<Effect>();
             float lifetime = 2;
-            effect.Setup(lifetime, true);
+            effect.Setup(lifetime);
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(lifetime);
             Assert.AreEqual(false, effect.gameObject.activeSelf);

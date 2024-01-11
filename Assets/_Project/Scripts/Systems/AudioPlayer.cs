@@ -9,14 +9,14 @@ namespace Selivura
     }
     public class AudioPlayer : MonoBehaviour, IDependecyProvider
     {
-        [SerializeField] AudioSource _sfxAudioSource;
-        [SerializeField] AudioSource _bgmAudioSource;
+        AudioSource _sfxAudioSource;
+        AudioSource _bgmAudioSource;
         private const string _globalVolumePlayerPrefsKey = "Global_Volume";
         private const string _sfxVolumePlayerPrefsKey = "SFX_Volume";
         private const string _bgmVolumePlayerPrefsKey = "BGM_Volume";
 
-        private float SFXVolume;
-        private float BGMVolume;
+        public float SFXVolume { get; private set; }
+        public float BGMVolume { get; private set; }
         [Provide]
         public AudioPlayer Provide()
         {
@@ -24,10 +24,21 @@ namespace Selivura
         }
         protected void Awake()
         {
+            _sfxAudioSource = CreateAudioSource("SFX");
+            _bgmAudioSource = CreateAudioSource("BGM");
+
             AudioListener.volume = PlayerPrefs.GetFloat(_globalVolumePlayerPrefsKey, 0.75f);
-            SFXVolume =PlayerPrefs.GetFloat(_sfxVolumePlayerPrefsKey, 1);
+            SFXVolume = PlayerPrefs.GetFloat(_sfxVolumePlayerPrefsKey, 1);
             BGMVolume = PlayerPrefs.GetFloat(_bgmVolumePlayerPrefsKey, 1);
         }
+
+        private AudioSource CreateAudioSource(string name)
+        {
+            GameObject sfxObject = new GameObject(name);
+            sfxObject.transform.SetParent(transform, false);
+            return sfxObject.AddComponent<AudioSource>();
+        }
+
         private void SaveAllCurrentParameters()
         {
             PlayerPrefs.SetFloat(_globalVolumePlayerPrefsKey, AudioListener.volume);
