@@ -10,13 +10,18 @@ namespace Selivura.UI
     public class PauseMenuUI : MonoBehaviour
     {
         [SerializeField] GameObject _menuContainer;
+        public bool CanBeOpened = true;
         public UnityEvent OnMenuOpened;
         public UnityEvent OnMenuClosed;
         [Inject]
         private PauseController _pauseController;
+
+        [Inject]
+        GameStateController _gameStateController;
         private void Awake()
         {
             Injector.Instance.Inject(this);
+            OpenMenu(false);
         }
         public void OpenMenu(bool value)
         {
@@ -31,14 +36,16 @@ namespace Selivura.UI
                 OnMenuClosed.Invoke();
             }
         }
-        public void QuitGameButton()
+        public void MainMenuButton()
         {
-            Application.Quit();
+            OpenMenu(false);
+            _gameStateController.GoToMainMenu();
         }
         
         public void RestartGameButton()
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex); //TODO Добавить подтверждение сюда
+            GameStateController.RestartGame(); //TODO Добавить подтверждение сюда
+            OpenMenu(false);
         }
     }
 }

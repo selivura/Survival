@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4309786392770176636}
   - component: {fileID: 3131371778847574998}
   - component: {fileID: 654241847007678758}
+  - component: {fileID: 7369062467268475358}
   m_Layer: 5
   m_Name: NormalButton
   m_TagString: Untagged
@@ -120,7 +121,37 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3131371778847574998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7369062467268475358}
+        m_TargetAssemblyTypeName: Selivura.RandomSoundEffectPlayer, Scripts
+        m_MethodName: PlayRandomSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7369062467268475358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870073509388688554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403f852e95854e0428f60f47ece0fdba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: cb877c2ca41e61e4a97d71e35688c5ce, type: 3}
+  _volume: 0.25
+  _randomPitchMax: 1
+  _randomPitchMin: 1
+  _channel: 0
 --- !u!1001 &3956243500327406792
 PrefabInstance:
   m_ObjectHideFlags: 0
