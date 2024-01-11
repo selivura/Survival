@@ -1,0 +1,17 @@
+{
+    "name": "Scripts.PostProcessing",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1c693ea1a6c3ace4d9cd84f30a01a089",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

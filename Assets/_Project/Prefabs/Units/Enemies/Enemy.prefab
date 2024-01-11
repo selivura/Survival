@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 2050544435820865514}
   - component: {fileID: 2695397413032140017}
   - component: {fileID: 6638318840922486268}
+  - component: {fileID: 6015272494312989413}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -313,6 +314,20 @@ MonoBehaviour:
   _randomPitchMax: 1.05
   _randomPitchMin: 0.95
   _channel: 0
+--- !u!114 &6015272494312989413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8909339015782153265}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f593b1ace1f5ca49bee570b5735a248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnRange: 0
+  Amount: 1
 --- !u!1001 &664711858010619168
 PrefabInstance:
   m_ObjectHideFlags: 0

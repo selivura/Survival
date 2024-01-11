@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9183892265136402495}
   - component: {fileID: 864464172525635940}
   - component: {fileID: 7228800312844910710}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 6534612485109437630}
   - component: {fileID: 7496462576886116415}
   - component: {fileID: 5599653164826827815}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,8 +238,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1801987985
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Time: 0.1
   m_PreviewTimeScale: 1
@@ -325,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5749274250690867190}
   - component: {fileID: 669060894532814944}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,8 +385,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1801987985
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -8627436796243444615, guid: 1bb6cf3216acdb647b4fd5905809ea8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

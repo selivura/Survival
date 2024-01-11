@@ -33,12 +33,12 @@ namespace Selivura
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out EnemyUnit unit))
+            if (collision.TryGetComponent(out Unit unit))
             {
                 Hit(unit);
             }
         }
-        private void Hit(EnemyUnit unit)
+        private void Hit(Unit unit)
         {
             unit.ChangeHealth(-_data.Damage);
             OnHit?.Invoke();
