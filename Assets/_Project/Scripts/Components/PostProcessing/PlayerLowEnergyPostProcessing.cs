@@ -20,7 +20,6 @@ namespace Selivura.PostProcessing
         private void OnEnable()
         {
             _player.OnEnergyChanged += UpdateVolume;
-            UpdateVolume();
         }
         private void OnDisable()
         {

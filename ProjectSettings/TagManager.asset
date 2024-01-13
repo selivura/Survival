@@ -19,9 +19,9 @@ TagManager:
   - Player
   - Minimap
   - PlayerProjectile
-  - 
-  - 
-  - 
+  - PlayerArea
+  - NeutralArea
+  - EnemyArea
   - 
   - 
   - 
