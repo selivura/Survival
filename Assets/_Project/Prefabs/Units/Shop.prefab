@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 100
-  _baseHealth: 25
+  _baseHealth: 40
   OnKilled:
     m_PersistentCalls:
       m_Calls:

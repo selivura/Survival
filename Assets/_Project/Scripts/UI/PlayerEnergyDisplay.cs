@@ -18,7 +18,7 @@ namespace Selivura.UI
         {
             progressBar.CurrentValue = _player.EnergyLeft;
             progressBar.Min = 0;
-            progressBar.Max = _player.Energy.Value;
+            progressBar.Max = _player.MaxEnergy;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Selivura.Player
     {
         public const float NoEnergySpeedPenaltyMultiplier = .5f;
         PlayerInput _playerInput;
-        private IMoveable _movement;
+        private IMovement _movement;
         private Combat _combat;
         public Vector2 MovementInput { get; private set; }
         public bool AttackInput { get; private set; }
@@ -42,7 +42,7 @@ namespace Selivura.Player
             _cam = Camera.main;
             _inputActions = new PlayerControlActions();
             _playerInput = GetComponent<PlayerInput>();
-            _movement = GetComponent<IMoveable>();
+            _movement = GetComponent<IMovement>();
             _combat = GetComponent<Combat>();
             _playerUnit = GetComponent<PlayerUnit>();
         }
@@ -52,11 +52,11 @@ namespace Selivura.Player
             {
                 if (_playerUnit.EnergyLeft > 0)
                 {
-                    _movement.Move(MovementInput, _playerUnit.MovementSpeed.Value);
+                    _movement.Move(MovementInput, _playerUnit.PlayerStats.MovementSpeed.Value);
                 }
                 else
                 {
-                    _movement.Move(MovementInput, _playerUnit.MovementSpeed.Value * NoEnergySpeedPenaltyMultiplier);
+                    _movement.Move(MovementInput, _playerUnit.PlayerStats.MovementSpeed.Value * NoEnergySpeedPenaltyMultiplier);
                 }
 
             }
@@ -74,9 +74,9 @@ namespace Selivura.Player
                 if (AttackInput && _playerUnit.CombatEnabled)
                 {
                     Vector2 dir = Utilities.GetMouseDirection(_cam, transform.position);
-                    int damage = Mathf.RoundToInt(_playerUnit.AttackDamage.Value);
+                    int damage = Mathf.RoundToInt(_playerUnit.PlayerStats.AttackDamage.Value);
                     AttackData attackData =
-                        new AttackData(damage, _playerUnit.AttackCooldown.Value, _playerUnit.ProjectileSpeed.Value, _playerUnit.AttackRange.Value);
+                        new AttackData(damage, _playerUnit.PlayerStats.AttackCooldown.Value, _playerUnit.PlayerStats.ProjectileSpeed.Value, _playerUnit.PlayerStats.AttackRange.Value);
                     _combat.Attack(dir, attackData);
                 }
             if (InteractInput)

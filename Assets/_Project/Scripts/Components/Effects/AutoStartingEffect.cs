@@ -10,7 +10,7 @@ namespace Selivura
     public class AutoStartingEffect : Effect
     {
         [SerializeField] protected float lifetime = 1;
-        private void Awake()
+        private void OnEnable()
         {
             Setup(lifetime);
         }

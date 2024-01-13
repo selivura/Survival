@@ -15,26 +15,28 @@ namespace Selivura
         public override void OnPickup(PlayerUnit player)
         {
             base.OnPickup(player);
-            player.Energy.AddModifier(Energy);
-            player.EnergyRegeneration.AddModifier(EnergyRegeneration);
-            player.EnergyDecay.AddModifier(EnergyDecay);
-            player.MovementSpeed.AddModifier(MovementSpeed);
-            player.AttackDamage.AddModifier(AttackDamage);
-            player.AttackCooldown.AddModifier(AttackCooldown);
-            player.ProjectileSpeed.AddModifier(ProjectileSpeed);
-            player.AttackRange.AddModifier(AttackRange);
+            var playerStats = player.PlayerStats;
+            playerStats.Energy.AddModifier(Energy);
+            playerStats.EnergyRegeneration.AddModifier(EnergyRegeneration);
+            playerStats.EnergyDecay.AddModifier(EnergyDecay);
+            playerStats.MovementSpeed.AddModifier(MovementSpeed);
+            playerStats.AttackDamage.AddModifier(AttackDamage);
+            playerStats.AttackCooldown.AddModifier(AttackCooldown);
+            playerStats.ProjectileSpeed.AddModifier(ProjectileSpeed);
+            playerStats.AttackRange.AddModifier(AttackRange);
         }
         public override void OnRemove(PlayerUnit player)
         {
             base.OnRemove(player);
-            player.Energy.RemoveModifier(Energy);
-            player.EnergyRegeneration.RemoveModifier(EnergyRegeneration);
-            player.EnergyDecay.RemoveModifier(EnergyDecay);
-            player.MovementSpeed.RemoveModifier(MovementSpeed);
-            player.AttackDamage.RemoveModifier(AttackDamage);
-            player.AttackCooldown.RemoveModifier(AttackCooldown);
-            player.ProjectileSpeed.RemoveModifier(ProjectileSpeed);
-            player.AttackRange.RemoveModifier(AttackRange);
+            var playerStats = player.PlayerStats;
+            playerStats.Energy.RemoveModifier(Energy);
+            playerStats.EnergyRegeneration.RemoveModifier(EnergyRegeneration);
+            playerStats.EnergyDecay.RemoveModifier(EnergyDecay);
+            playerStats.MovementSpeed.RemoveModifier(MovementSpeed);
+            playerStats.AttackDamage.RemoveModifier(AttackDamage);
+            playerStats.AttackCooldown.RemoveModifier(AttackCooldown);
+            playerStats.ProjectileSpeed.RemoveModifier(ProjectileSpeed);
+            playerStats.AttackRange.RemoveModifier(AttackRange);
         }
     }
 }

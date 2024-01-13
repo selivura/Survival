@@ -63,5 +63,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _playerEnergyThreshold: 0.3
+  _playerEnergyThreshold: 0.5
   _defaultVolumeWeight: 1

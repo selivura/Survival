@@ -28,7 +28,7 @@ namespace Selivura.PostProcessing
         }
         private void UpdateVolume()
         {
-            var value = _player.EnergyLeft / _player.Energy.Value;
+            var value = _player.EnergyLeft / _player.MaxEnergy;
             if(value > _playerEnergyThreshold)
                 _volume.weight = _defaultVolumeWeight;
             else

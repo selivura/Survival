@@ -31,7 +31,7 @@ namespace Selivura
         {
             if (CanCharge)
             {
-                _player.ChangeEnergy(_player.EnergyRegeneration.Value * _rechargeCooldown);
+                _player.ChangeEnergy(_player.PlayerStats.EnergyRegeneration.Value * _rechargeCooldown);
                 _rechargeTimer = new Timer(_rechargeCooldown, Time.time);
             }
         }

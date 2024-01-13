@@ -18,7 +18,7 @@ namespace Selivura.UI
             }
             else
             {
-                tmpText.text = "Wave " + _waveController.CurrentWaveIndex + 1;
+                tmpText.text = "Wave " + (_waveController.CurrentWaveIndex).ToString();
             }
         }
     }

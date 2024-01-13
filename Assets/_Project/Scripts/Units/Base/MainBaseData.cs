@@ -7,8 +7,11 @@ namespace Selivura
     {
         public int BaseHealth = 100;
         public int HealthPerLevel = 10;
-        public float CombatRadiusPerLevel = .25f;
-        public float BaseCombatRadius = 2.5f;
-        public int MatterProgression = 5;
+        public float EnergyRegenRadiusPerLevel = .25f;
+        public float BaseEnergyRegenRadius = 2.5f;
+        public int XPProgression = 5;
+        public float RegenerationPercent = .1f;
+        public int RequiredMatterToHeal = 5;
+        public int PlayerHealing = 30;
     }
 }

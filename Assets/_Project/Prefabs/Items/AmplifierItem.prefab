@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: Description
-      value: Increases damage by 1
+      value: Increases damage by 5
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: DisplayName
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: AttackDamage.Value
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

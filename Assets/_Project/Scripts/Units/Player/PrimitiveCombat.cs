@@ -17,7 +17,7 @@ namespace Selivura.Player
             var foundTargets = Physics2D.OverlapCircleAll(transform.position, _attackDistance, _targetLayerMask);
             foreach (var foundTarget in foundTargets)
             {
-                if (foundTarget.TryGetComponent(out EnemyUnit targetEnemy))
+                if (foundTarget.TryGetComponent(out BaseEnemyUnit targetEnemy))
                 {
                     targetEnemy.ChangeHealth(-data.Damage);
                 }

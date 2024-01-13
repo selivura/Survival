@@ -4,17 +4,17 @@ using UnityEngine.Events;
 
 namespace Selivura
 {
-    [RequireComponent(typeof(IMoveable))]
+    [RequireComponent(typeof(IMovement))]
     public class Projectile : MonoBehaviour
     {
         [SerializeField] ProjectileData _data;
         private float _initializationTime;
         private bool _initialized;
         public UnityEvent OnHit;
-        IMoveable _movement;
+        IMovement _movement;
         private void Awake()
         {
-            _movement = GetComponent<IMoveable>();
+            _movement = GetComponent<IMovement>();
         }
         public void Initialize(ProjectileData data, Vector2 direction)
         {

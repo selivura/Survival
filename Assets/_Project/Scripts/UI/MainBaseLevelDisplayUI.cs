@@ -16,7 +16,7 @@ namespace Selivura.UI
         }
         private void OnMatterChanged()
         {
-            tmpText.text = $"LV.{_base.Level} ({_base.Matter}/{_base.MatterToLevelUp})";
+            tmpText.text = $"LV.{_base.Level} ({_base.Matter}/{_base.XPToLevelUp})";
         }
     }
 }

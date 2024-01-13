@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 3086842870721540288}
   - component: {fileID: 3140595966950230675}
   - component: {fileID: 7928306523494786614}
+  - component: {fileID: -6289862948150446947}
   - component: {fileID: 8455989593262893777}
   - component: {fileID: 7782937574852327389}
   - component: {fileID: 1716225756960381873}
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 5
-  _baseHealth: 6
+  _baseHealth: 30
   OnKilled:
     m_PersistentCalls:
       m_Calls:
@@ -183,15 +184,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InitializeOnEnable: 0
-  _attackDamage: 5
-  _speed: 2
-  _maxAggroDistance: 25
-  _attackDistance: 1.5
+--- !u!114 &-6289862948150446947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8909339015782153265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c558a70f40d59246a158c0492abc07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _searchDistance: 100
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 3072
-  _attackCooldown: 1
   _targetSearchCooldown: 0.5
+  _attackDamage: 5
+  _attackDistance: 2
+  _attackCooldown: 1
+  _moveSpeed: 2
 --- !u!58 &8455989593262893777
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -239,7 +252,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 25
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

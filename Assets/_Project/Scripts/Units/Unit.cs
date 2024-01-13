@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -44,6 +45,14 @@ namespace Selivura
                 Deinitialize();
             }
             return true;
+        }
+        public void TakeDamage(int value)
+        {
+            ChangeHealth(-value);
+        }
+        public void Heal(int value)
+        {
+            ChangeHealth(value);
         }
         public virtual void Deinitialize()
         {

@@ -2,17 +2,17 @@ using UnityEngine;
 
 namespace Selivura
 {
-    [RequireComponent(typeof(IMoveable))]
+    [RequireComponent(typeof(IMovement))]
     public class SimpleEnemyAnimation : MonoBehaviour
     {
-        IMoveable _movement;
+        IMovement _movement;
         [SerializeField] SpriteRenderer _spriteRenderer;
         [SerializeField] Animator _animator;
         [SerializeField] string _movementXParameter = "MovementX";
         [SerializeField] string _movementYParameter = "MovementY";
         private void OnEnable()
         {
-            _movement = GetComponent<IMoveable>();
+            _movement = GetComponent<IMovement>();
             if (_animator == null)
             {
                 Debug.LogError("No animator assigned");

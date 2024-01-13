@@ -5,6 +5,6 @@ namespace Selivura
     [CreateAssetMenu(menuName = "Enemy wave")]
     public class WaveData : ScriptableObject
     {
-        public EnemyUnit[] WaveEnemies;
+        public BaseEnemyUnit[] WaveEnemies;
     }
 }

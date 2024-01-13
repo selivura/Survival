@@ -6,30 +6,25 @@ namespace Selivura.Player
 {
     public class PlayerUnit : Unit, IDependecyProvider
     {
-        public bool CombatEnabled => EnergyLeft > 0;
-        public int MatterHarvested { get; private set; } = 0;
-        public float EnergyLeft = 100;
-        public float EnergyMax => Energy.Value;
+        public float EnergyLeft { get; private set; }
+        public bool InfiniteEnergy = false;
+        public float MaxEnergy => PlayerStats.Energy.Value;
 
-        public PlayerStat Energy = new PlayerStat();
-        public PlayerStat EnergyRegeneration = new PlayerStat();
-        public PlayerStat EnergyDecay = new PlayerStat();
-        public PlayerStat MovementSpeed = new PlayerStat();
-        public PlayerStat AttackDamage = new PlayerStat();
-        public PlayerStat AttackCooldown = new PlayerStat();
-        public PlayerStat ProjectileSpeed = new PlayerStat();
-        public PlayerStat AttackRange = new PlayerStat();
-        public List<Item> Inventory { get; private set; } = new List<Item>();
-
-        public UnityEvent<float> OnMatterChanged;
-        public UnityEvent<float> OnMatterIncreased;
-        public UnityEvent<float> OnMatterDecreased;
+        private Timer _energyDecayTiemr = new Timer(0, 0);
         public delegate void EnergyChangeDelegate();
         public event EnergyChangeDelegate OnEnergyChanged;
 
-        private Timer _energyDecayTiemr = new Timer(0, 0);
-        [SerializeField] private float _energyDecayCooldown = .1f;
-        public bool InfiniteEnergy = false;
+        public bool CombatEnabled => EnergyLeft > 0;
+
+        public PlayerStats PlayerStats { get; private set; }
+        public BasePlayerStats BasePlayerStats;
+        public List<Item> Inventory { get; private set; } = new List<Item>();
+
+        public int MatterHarvested { get; private set; } = 0;
+        public UnityEvent<float> OnMatterChanged;
+        public UnityEvent<float> OnMatterIncreased;
+        public UnityEvent<float> OnMatterDecreased;
+
         [Provide]
         public PlayerUnit Provide()
         {
@@ -41,14 +36,24 @@ namespace Selivura.Player
                 return;
             if (_energyDecayTiemr.Expired)
             {
-                _energyDecayTiemr = new Timer(_energyDecayCooldown, Time.time);
-                ChangeEnergy(-EnergyDecay.Value * _energyDecayCooldown);
+                _energyDecayTiemr = new Timer(BasePlayerStats.EnergyDecayCooldown, Time.time);
+                ChangeEnergy(-PlayerStats.EnergyDecay.Value * BasePlayerStats.EnergyDecayCooldown);
             }
         }
         public override void Initialize(int additiveHealth = 0)
         {
             base.Initialize(additiveHealth);
-            EnergyLeft = EnergyMax;
+            PlayerStats = new PlayerStats.Builder()
+                .WithEnergy(BasePlayerStats.Energy)
+                .WithEnergyDecay(BasePlayerStats.EnergyDecay)
+                .WithEnergyRegen(BasePlayerStats.EnergyRegeneration)
+                .WithAttackDamage(BasePlayerStats.AttackDamage)
+                .WithAttackCD(BasePlayerStats.AttackCooldown)
+                .WithProjectileSpeed(BasePlayerStats.ProjectileSpeed)
+                .WithMovementSpeed(BasePlayerStats.MovementSpeed)
+                .WithRange(BasePlayerStats.AttackRange)
+                .Build();
+            EnergyLeft = MaxEnergy;
         }
         public void AddItem(Item itemPrefab)
         {
@@ -74,12 +79,12 @@ namespace Selivura.Player
         public void ChangeEnergy(float value)
         {
             EnergyLeft += value;
-            if (EnergyLeft > EnergyMax)
-                EnergyLeft = EnergyMax;
+            if (EnergyLeft > MaxEnergy)
+                EnergyLeft = MaxEnergy;
             if (EnergyLeft <= 0)
             {
                 EnergyLeft = 0;
-                ChangeHealth(-Mathf.RoundToInt(EnergyDecay.Value));
+                ChangeHealth(-Mathf.RoundToInt(PlayerStats.EnergyDecay.Value));
             }
             OnEnergyChanged?.Invoke();
         }

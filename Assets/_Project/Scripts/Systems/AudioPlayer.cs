@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Selivura
@@ -93,7 +94,13 @@ namespace Selivura
                     break;
             }
         }
+
+        internal void PlaySound(object shootSound, SoundParameters soundParameters)
+        {
+            throw new NotImplementedException();
+        }
     }
+    [Serializable]
     public class SoundParameters
     {
         public SoundChannel Channel = SoundChannel.SFX;

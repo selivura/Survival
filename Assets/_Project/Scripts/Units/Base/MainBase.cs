@@ -8,16 +8,13 @@ namespace Selivura
     {
         public int Matter = 0;
         public int Level = 1;
-        public float RegenerationPercent = .1f;
-        public int MatterToLevelUp = 5;
+        public int XPToLevelUp = 5;
         public MainBaseData BaseData;
         public delegate void OnBaseStatChangedDelegate();
         public event OnBaseStatChangedDelegate OnMatterChanged;
         public Area Area;
 
         public UnityEvent OnLevelUp;
-        [SerializeField] private const int _playerHealing = 30;
-        [SerializeField] private const int _requiredMatterToHeal = 5;
 
         [Provide]
         public MainBase Provide()
@@ -40,12 +37,12 @@ namespace Selivura
             }
             _maxHealth = BaseData.BaseHealth;
             _currentHealth = _maxHealth;
-            Area.Radius = BaseData.BaseCombatRadius;
+            Area.Radius = BaseData.BaseEnergyRegenRadius;
         }
         public void ChangeMatter(int materiaAmount)
         {
             Matter += materiaAmount;
-            if (Matter >= MatterToLevelUp)
+            if (Matter >= XPToLevelUp)
             {
                 LevelUp();
             }
@@ -53,11 +50,11 @@ namespace Selivura
         }
         private void LevelUp()
         {
-            Matter -= MatterToLevelUp;
-            MatterToLevelUp += BaseData.MatterProgression;
+            Matter -= XPToLevelUp;
+            XPToLevelUp += BaseData.XPProgression;
             _maxHealth += BaseData.HealthPerLevel;
-            ChangeHealth(BaseData.HealthPerLevel + Mathf.RoundToInt(_maxHealth * (RegenerationPercent / 100f)));
-            Area.Radius += BaseData.CombatRadiusPerLevel;
+            ChangeHealth(BaseData.HealthPerLevel + Mathf.RoundToInt(_maxHealth * (BaseData.RegenerationPercent / 100f)));
+            Area.Radius += BaseData.EnergyRegenRadiusPerLevel;
 
             Level++;
             OnLevelUp?.Invoke();
@@ -69,10 +66,10 @@ namespace Selivura
         {
             if (!CanInteract(interactor))
                 return;
-            int claim = Mathf.Min(interactor.MatterHarvested, MatterToLevelUp);
+            int claim = Mathf.Min(interactor.MatterHarvested, XPToLevelUp);
             interactor.ChangeMatter(-claim);
-            if (interactor.MatterHarvested >= _requiredMatterToHeal)
-                interactor.ChangeHealth(claim / _requiredMatterToHeal * _playerHealing);
+            if (interactor.MatterHarvested >= BaseData.RequiredMatterToHeal)
+                interactor.ChangeHealth(claim / BaseData.RequiredMatterToHeal * BaseData.PlayerHealing);
             ChangeMatter(claim);
         }
         public bool CanInteract(PlayerUnit interactor)

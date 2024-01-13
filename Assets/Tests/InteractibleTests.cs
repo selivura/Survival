@@ -42,7 +42,7 @@ namespace Selivura.Tests
             shop.Interact(playerUnit);
 
             Assert.AreEqual(0, playerUnit.MatterHarvested);
-            Assert.AreEqual(item.AttackDamage.Value, playerUnit.AttackDamage.Value);
+            Assert.AreEqual(item.AttackDamage.Value, playerUnit.PlayerStats.AttackDamage.Value);
             yield return null;
         }
     }
