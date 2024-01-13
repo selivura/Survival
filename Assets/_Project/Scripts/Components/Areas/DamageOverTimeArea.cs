@@ -19,7 +19,7 @@ namespace Selivura
             if (collision.TryGetComponent(out Unit unit))
                 _insideUnits.Remove(unit);
         }
-        private void FixedUpdate()
+        protected override void FixedUpdate()
         {
             if (_damageTimer.Expired)
                 for (int i = 0; i < _insideUnits.Count; i++)

@@ -10,6 +10,7 @@ namespace Selivura
         public float AttackCooldown = 1;
         public float AttackPrepare = 1;
         public GameObject TargetMarkPrefab;
+        public LineRenderer TargetLinePrefab;
         public AudioClip[] ShootSounds;
         public AudioClip TargetSound;
         public SoundParameters SoundParameters = new SoundParameters.Builder()
@@ -30,5 +31,6 @@ namespace Selivura
             animator.SetBool(PrepareParameterName, false);
             effectPool.GetOrCreatedEffect(HitEffect).transform.position = targetPosition;
         }
+
     }
 }

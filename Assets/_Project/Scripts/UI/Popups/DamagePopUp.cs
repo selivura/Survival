@@ -15,7 +15,7 @@ namespace Selivura.UI
             _textMeshPro.text = (-damageAmount).ToString();
             transform.DOMoveY(transform.position.y + _moveUpValue, _lifetime);
             transform.DOScale(0, _lifetime).SetEase(_ease);
-            Destroy(this, _lifetime);
+            Destroy(gameObject, _lifetime);
         }
     }
 }

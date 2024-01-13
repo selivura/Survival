@@ -12,6 +12,7 @@ namespace Selivura
         private Timer _attackPrepareTimer = new Timer(0, 0);
         private Animator _animator;
         private GameObject _spawnedTargetMark;
+        private LineRenderer _spawnedTargetLine;
         private Unit _unit;
         private bool _isPreparing;
         [Inject]
@@ -29,6 +30,7 @@ namespace Selivura
             _unit = me;
             _processor = processor;
             _unit.OnKilled.AddListener(OnKilled);
+            RemoveTargetMark();
             Injector.Instance.Inject(this);
         }
         private void OnKilled(Unit a = null)
@@ -41,18 +43,24 @@ namespace Selivura
             if (_spawnedTargetMark != null)
             {
                 Object.Destroy(_spawnedTargetMark);
-                _spawnedTargetMark = null;
+            }
+            if (_spawnedTargetLine != null)
+            {
+                Object.Destroy(_spawnedTargetLine.gameObject );
             }
         }
 
         public override NodeState Evaluate()
         {
             Unit target = (Unit)_dataNode.GetData(FollowerEnemyBT.DataTargetKey);
+
+            Debug.Log("Checking if target exists");
             if (target == null)
             {
                 state = NodeState.Failure;
                 _isPreparing = false;
                 RemoveTargetMark();
+                Debug.Log("No target found");
                 return state;
             }
             if (!_attackCDTimer.Expired)
@@ -94,6 +102,12 @@ namespace Selivura
             {
                 _spawnedTargetMark = Object.Instantiate(_processor.TargetMarkPrefab, target.transform.position, Quaternion.identity);
             }
+            if (_spawnedTargetLine == null)
+            {
+                _spawnedTargetLine = Object.Instantiate(_processor.TargetLinePrefab, _unit.transform.position, Quaternion.identity);
+            }
+            _spawnedTargetLine.SetPosition(0, _unit.transform.position);
+            _spawnedTargetLine.SetPosition(1, target.transform.position);
             _spawnedTargetMark.transform.position = target.transform.position;
         }
         private void Shoot(Unit target)

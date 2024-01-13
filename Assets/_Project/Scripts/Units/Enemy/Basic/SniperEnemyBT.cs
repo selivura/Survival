@@ -31,7 +31,6 @@ namespace Selivura
             {
                 new Sequence(new List<Node>
                 {
-                    //, _attackDamage, _attackCooldown,_attackPrepare, _dataNode, _animator, _sniperTargetMark, _shootAudio
                     new CheckTargetInAttackRange(transform, _attackDistance, _dataNode, _movement),
                     new TaskSniperAttack.Builder()
                     .WithUnit(GetComponent<Unit>())

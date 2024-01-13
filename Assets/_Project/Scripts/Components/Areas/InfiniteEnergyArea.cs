@@ -14,13 +14,30 @@ namespace Selivura
         {
             Injector.Instance.Inject(this);
         }
-        protected override void OnTriggerStay2D(Collider2D collision)
+        protected override void OnTriggerEnter2D(Collider2D collision)
         {
-            _player.InfiniteEnergy = true;
+            if (collision.gameObject == _player.gameObject)
+            {
+                playerInRange = true;
+            }
+        }
+        protected override void FixedUpdate()
+        {
+            if(playerInRange)
+            {
+                _player.InfiniteEnergy = true;
+            }
+            else
+            {
+                _player.InfiniteEnergy = false;
+            }
         }
         protected override void OnTriggerExit2D(Collider2D collision)
         {
-            _player.InfiniteEnergy = false;
+            if (collision.gameObject == _player.gameObject)
+            {
+                playerInRange = false;
+            }
         }
     }
 }

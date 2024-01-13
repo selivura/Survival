@@ -82,16 +82,18 @@ namespace Selivura
         {
             CurrentPhaseType = PhaseType.Defence;
 
-            _currentSpawnIndex = 0; 
+            _currentSpawnIndex = 0;
 
             _currentWaveData = _waveDatas[CurrentWaveIndex];
-            SpawnEnemy();
             CurrentWaveIndex++;
             if (CurrentWaveIndex >= _waveDatas.Length)
             {
                 Loop++;
                 CurrentWaveIndex = 0;
+                _currentWaveData = _waveDatas[CurrentWaveIndex];
+                CurrentWaveIndex++;
             }
+            SpawnEnemy();
             OnPhaseChange?.Invoke(CurrentPhaseType);
             OnWaveStarted?.Invoke();
             

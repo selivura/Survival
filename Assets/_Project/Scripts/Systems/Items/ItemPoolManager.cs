@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ namespace Selivura
 {
     public class ItemPoolManager : MonoBehaviour, IDependecyProvider
     {
+        [SerializeField] ItemList _alwaysAvialableItems;
         [SerializeField] ItemList _itemList;
         List<Item> _unusedItems = new List<Item>();
 
@@ -20,8 +20,8 @@ namespace Selivura
         }
         public Item GetRandomUnusedItem()
         {
-            if (_unusedItems.Count <= 0)
-                return _itemList.Items[0];
+            if (_unusedItems.Count < 1)
+                return _alwaysAvialableItems.Items.GetRandomElement();
 
             var item = _unusedItems.GetRandomElement();
             _unusedItems.Remove(item);

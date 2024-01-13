@@ -139,6 +139,66 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: NormalEnemy_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5294118}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 4
+      width: 12
+      height: 17
+    spriteID: 2b667e41a3e181745b400d668a4435ae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 4}
+  - name: NormalEnemy_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5294118}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 4
+      width: 12
+      height: 17
+    spriteID: a69d47f1af5030645a4b79e2cc4214a0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 4}
+  - name: NormalEnemy_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5294118}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 29
+      width: 12
+      height: 17
+    spriteID: 7954875d5e421454f82102832186c50e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 29}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -148,7 +208,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: NormalEnemy
+    - name: NormalEnemy_Frame_0
       frameIndex: 0
       cellRect:
         x: 18
@@ -156,6 +216,30 @@ ScriptedImporter:
         width: 12
         height: 17
       spriteId: baf90fd9ab347664e98ff9664c690c44
+    - name: NormalEnemy_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 18
+        y: 15
+        width: 12
+        height: 17
+      spriteId: 2b667e41a3e181745b400d668a4435ae
+    - name: NormalEnemy_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 18
+        y: 15
+        width: 12
+        height: 17
+      spriteId: a69d47f1af5030645a4b79e2cc4214a0
+    - name: NormalEnemy_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 18
+        y: 15
+        width: 12
+        height: 17
+      spriteId: 7954875d5e421454f82102832186c50e
     linkedCells: []
     parentIndex: -1
   platformSettings:

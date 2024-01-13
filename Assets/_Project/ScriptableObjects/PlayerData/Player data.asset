@@ -19,5 +19,5 @@ MonoBehaviour:
   MovementSpeed: 7
   AttackDamage: 10
   AttackCooldown: 0.4
-  ProjectileSpeed: 25
+  ProjectileSpeed: 15
   AttackRange: 8

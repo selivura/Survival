@@ -34,6 +34,8 @@ namespace Selivura
         public virtual bool ChangeHealth(int value)
         {
             _currentHealth += value;
+            if (_currentHealth > _maxHealth)
+                _currentHealth = _maxHealth;
             OnHealthChanged?.Invoke(this);
             if (value < 0)
                 OnHealthDecreased?.Invoke(value);

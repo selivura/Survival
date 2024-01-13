@@ -17,6 +17,7 @@ MonoBehaviour:
   AttackCooldown: 5
   AttackPrepare: 3
   TargetMarkPrefab: {fileID: 8564871826436935208, guid: 928be4f3ff27bb2409fef92cbfe977e0, type: 3}
+  TargetLinePrefab: {fileID: 372361939637079170, guid: d0970d2c39e8be5428b93851161ec800, type: 3}
   ShootSounds:
   - {fileID: 8300000, guid: fecc3e7a0166a104cb810435f6fdf37b, type: 3}
   - {fileID: 8300000, guid: 5802cc242c56cfa47a4b9ac4bb747662, type: 3}

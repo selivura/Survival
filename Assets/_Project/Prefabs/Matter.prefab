@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: -8894147907681812585}
   - component: {fileID: 3006514049171140840}
   - component: {fileID: 5998713710799160680}
+  - component: {fileID: 1937537690267117020}
+  - component: {fileID: 843407455432306192}
   m_Layer: 8
   m_Name: Matter
   m_TagString: Untagged
@@ -48,6 +50,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amount: 1
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1937537690267117020}
+        m_TargetAssemblyTypeName: Selivura.RandomSoundEffectPlayer, Scripts
+        m_MethodName: PlayRandomSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 843407455432306192}
+        m_TargetAssemblyTypeName: Selivura.EffectSpawner, Scripts
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!58 &3006514049171140840
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -110,6 +139,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1937537690267117020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631390572302927725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403f852e95854e0428f60f47ece0fdba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - {fileID: 8300000, guid: 064d94482b17dec4a8ef285ed221f875, type: 3}
+  - {fileID: 8300000, guid: 12773f42c594fde4ab33cec01fe2d136, type: 3}
+  _volume: 0.25
+  _randomPitchMax: 1
+  _randomPitchMin: 1
+  _channel: 0
+--- !u!114 &843407455432306192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631390572302927725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f08b63d100b114f9ec964db141467d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPrefab: {fileID: 7185255288150514979, guid: e2924473bf178ac4180a80247937063b, type: 3}
 --- !u!1001 &1101294135535955468
 PrefabInstance:
   m_ObjectHideFlags: 0

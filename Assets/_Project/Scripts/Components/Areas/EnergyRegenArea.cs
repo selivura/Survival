@@ -9,35 +9,18 @@ namespace Selivura
         [SerializeField] private float _rechargeCooldown = .1f;
         private Timer _rechargeTimer = new Timer(0,0);
         public bool CanCharge => _rechargeTimer.Expired && playerInRange;
-       
-        protected override void OnTriggerStay2D(Collider2D collision)
-        {
-            base.OnTriggerStay2D(collision);
-            if (collision.gameObject == _player.gameObject)
-            {
-                playerInRange = true;
-            }
-        }
-        protected override void OnTriggerExit2D(Collider2D collision)
-        {
-            base.OnTriggerExit2D(collision);
-            if (!_player) return;
-            if (collision.gameObject == _player.gameObject)
-            {
-                playerInRange = false;
-            }
-        }
         private void ChargePlayerEnergy()
         {
+            _player.ChangeEnergy(_player.PlayerStats.EnergyRegeneration.Value * _rechargeCooldown);
+            _rechargeTimer = new Timer(_rechargeCooldown, Time.time);
+        }
+        protected override void FixedUpdate()
+        {
+            base.FixedUpdate();
             if (CanCharge)
             {
-                _player.ChangeEnergy(_player.PlayerStats.EnergyRegeneration.Value * _rechargeCooldown);
-                _rechargeTimer = new Timer(_rechargeCooldown, Time.time);
+                ChargePlayerEnergy();
             }
-        }
-        private void FixedUpdate()
-        {
-            ChargePlayerEnergy();
         }
     }
 }

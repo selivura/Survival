@@ -15,8 +15,10 @@ namespace Selivura.BehaviorTrees
                     case NodeState.Failure:
                         continue;
                     case NodeState.Succes:
+                        state = NodeState.Succes;
                         return state;
                     case NodeState.Running:
+                        state = NodeState.Running;
                         return state;
                     default:
                         continue;

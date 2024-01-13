@@ -40,5 +40,9 @@ namespace Selivura
         {
 
         }
+        protected virtual void FixedUpdate()
+        {
+
+        }
     }
 }

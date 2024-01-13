@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5f6d22399a8ac44801a11f2ff5a170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damagePopUpFactory: {fileID: 11400000, guid: 7ed74fa0590d7c248ac7782e364d0c60, type: 2}
+  _damagePopUpFactory: {fileID: 11400000, guid: 1b6e2f8a0ca68c0438621840bfa8fcb9, type: 2}
 --- !u!114 &2050544435820865514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,11 +355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732989832526312496, guid: 1fe188dabd988cb43b263177b0b171fa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1732989832526312496, guid: 1fe188dabd988cb43b263177b0b171fa, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1732989832526312496, guid: 1fe188dabd988cb43b263177b0b171fa, type: 3}
       propertyPath: m_LocalPosition.x

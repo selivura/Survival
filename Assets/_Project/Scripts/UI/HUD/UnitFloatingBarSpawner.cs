@@ -19,7 +19,6 @@ namespace Selivura.UI
         {
             _unit.OnDeinitialized.AddListener(DespawnCurrent);
             _unit.OnInitialized.AddListener(Spawn);
-
         }
         private void Spawn(Unit unit)
         {
@@ -37,7 +36,8 @@ namespace Selivura.UI
         }
         private void Update()
         {
-            _current.transform.position = _cam.WorldToViewportPoint(transform.position);
+            if(_current)
+                _current.transform.position = _cam.WorldToViewportPoint(transform.position);
         }
         private void DespawnCurrent(Unit unit)
         {

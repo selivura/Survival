@@ -86,6 +86,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: e20e3617b84aec84991596f038e056a0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b4d0c5ed3e9b7ca49bb454e423805bc4, type: 2}
+    - target: {fileID: 3626916397498700004, guid: e20e3617b84aec84991596f038e056a0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: e20e3617b84aec84991596f038e056a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -131,6 +139,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: e20e3617b84aec84991596f038e056a0, type: 3}
+--- !u!95 &3549149757753707963 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1160356261127867848, guid: e20e3617b84aec84991596f038e056a0, type: 3}
+  m_PrefabInstance: {fileID: 2403643716506976371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5480582668528123774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: e20e3617b84aec84991596f038e056a0, type: 3}
@@ -340,6 +353,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8135547139838436247, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1001221544450361052}
+    - targetCorrespondingSourceObject: {fileID: 8135547139838436247, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1303352815221441640}
   m_SourcePrefab: {fileID: 100100000, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}
 --- !u!1 &1727470177876988189 stripped
 GameObject:
@@ -389,7 +405,19 @@ MonoBehaviour:
   _baseHealth: 100
   OnKilled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Selivura.GameStateController, Scripts
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -408,6 +436,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3549149757753707963}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hit
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1303352815221441640}
+        m_TargetAssemblyTypeName: Selivura.UI.DamagePopUpSpawner, Scripts.UI
+        m_MethodName: SpawnDamagePopUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hit
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealthIncreased:
     m_PersistentCalls:
       m_Calls: []
@@ -420,8 +472,7 @@ MonoBehaviour:
   InitializeOnEnable: 0
   Matter: 0
   Level: 1
-  RegenerationPercent: 0.1
-  MatterToLevelUp: 5
+  XPToLevelUp: 5
   BaseData: {fileID: 11400000, guid: 57d2cf2c6a923714b82c62c7ab98f533, type: 2}
   Area: {fileID: 4774616214746764001}
   OnLevelUp:
@@ -464,6 +515,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectPrefab: {fileID: 7415167693764806578, guid: 76c363855b86b1e40bdffcaae033a63b, type: 3}
+--- !u!114 &1303352815221441640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727470177876988189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5f6d22399a8ac44801a11f2ff5a170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damagePopUpFactory: {fileID: 11400000, guid: 7ed74fa0590d7c248ac7782e364d0c60, type: 2}
 --- !u!114 &4774616214746764001 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2692213431452213355, guid: 1e9c5489881fb4b43b3e3e23c168f75b, type: 3}

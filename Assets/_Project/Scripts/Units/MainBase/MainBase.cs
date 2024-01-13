@@ -68,8 +68,6 @@ namespace Selivura
                 return;
             int claim = Mathf.Min(interactor.MatterHarvested, XPToLevelUp);
             interactor.ChangeMatter(-claim);
-            if (interactor.MatterHarvested >= BaseData.RequiredMatterToHeal)
-                interactor.ChangeHealth(claim / BaseData.RequiredMatterToHeal * BaseData.PlayerHealing);
             ChangeMatter(claim);
         }
         public bool CanInteract(PlayerUnit interactor)
