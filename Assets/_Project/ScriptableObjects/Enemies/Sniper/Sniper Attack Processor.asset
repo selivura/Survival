@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sniper Attack Processor
   m_EditorClassIdentifier: 
   PrepareParameterName: AttackPrepare
-  AttackDamage: 15
+  AttackDamage: 10
   AttackCooldown: 5
   AttackPrepare: 3
   TargetMarkPrefab: {fileID: 8564871826436935208, guid: 928be4f3ff27bb2409fef92cbfe977e0, type: 3}
@@ -24,6 +24,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f02814b62ca4c9469420ae40236bc23, type: 3}
   - {fileID: 8300000, guid: bd83c36222ec1c0448601661f1573860, type: 3}
   - {fileID: 8300000, guid: 982b1896316155b4fbd2cc5cef6d79a6, type: 3}
+  TargetSound: {fileID: 8300000, guid: 3d8bcebc6e8c3bb4ebe7c6708846c1c0, type: 3}
   SoundParameters:
     Channel: 0
     Volume: 0.3

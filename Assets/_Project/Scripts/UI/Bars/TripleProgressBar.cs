@@ -11,7 +11,7 @@ namespace Selivura.UI
         [SerializeField] LinearProgressBar _healBar;
         [SerializeField] LinearProgressBar _mainBar;
         //[SerializeField] ProgressBar _overheal;
-        protected void Update()
+        protected void FixedUpdate()
         {
             _healBar.CurrentValue = CurrentValue;
             _healBar.Max = Max;

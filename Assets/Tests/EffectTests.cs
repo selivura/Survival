@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
-using Selivura.Player;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -30,14 +29,6 @@ namespace Selivura.Tests
             yield return new WaitForFixedUpdate();
             yield return new WaitForSeconds(lifetime);
             Assert.AreEqual(false, effect.gameObject.activeSelf);
-        }
-    }
-    public static class TestUtils
-    {
-        public static void Setup()
-        {
-            GameObject go = new GameObject("Injector");
-            go.AddComponent<Injector>();
         }
     }
 }

@@ -85,7 +85,7 @@ namespace Selivura
             Debug.Log("Preparing");
             _isPreparing = true;
             _attackPrepareTimer = new Timer(_processor.AttackPrepare, Time.time);
-            _processor.PlayPrepareEffects(_animator);
+            _processor.PlayPrepareEffects(_animator, _audioPlayer);
         }
 
         private void ApplyMarkOnTarget(Unit target)

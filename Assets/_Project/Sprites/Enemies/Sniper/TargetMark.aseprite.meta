@@ -159,26 +159,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 28}
-  - name: TargetMark_Frame_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 28
-      y: 4
-      width: 16
-      height: 16
-    spriteID: f6ba2ef95724f35438d975ba0806c676
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 28, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -204,14 +184,6 @@ ScriptedImporter:
         width: 16
         height: 16
       spriteId: 6e4975184cc24f1428b4b2000e495a5e
-    - name: TargetMark_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      spriteId: f6ba2ef95724f35438d975ba0806c676
     linkedCells: []
     parentIndex: -1
   platformSettings:

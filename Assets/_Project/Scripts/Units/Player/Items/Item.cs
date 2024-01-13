@@ -7,6 +7,7 @@ namespace Selivura
     {
         public Sprite Icon;
         public string DisplayName = "Item";
+        [TextArea]
         public string Description = "Description";
         public int Price = 10;
         protected PlayerUnit playerUnit;

@@ -34,11 +34,7 @@ namespace Selivura.Tests
 
         private static GameObject CreateTarget()
         {
-            GameObject target = new GameObject("Target");
-            target.AddComponent<PlayerUnit>();
-            target.AddComponent<Rigidbody2D>().gravityScale = 0;
-            target.AddComponent<CircleCollider2D>();
-            target.layer = 11;
+            GameObject target = TestUtils.CreatePlayer().gameObject;
             return target;
         }
 

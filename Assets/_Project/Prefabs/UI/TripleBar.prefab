@@ -640,6 +640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb43cd94fa1c81459c39187621c1cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Max: 0
+  Min: 0
+  CurrentValue: 0
   MaxDelta: 50
   _damageBar: {fileID: 1821314883793749833}
   _healBar: {fileID: 4111266694861339746}

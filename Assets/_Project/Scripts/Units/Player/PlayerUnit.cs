@@ -84,7 +84,7 @@ namespace Selivura.Player
             if (EnergyLeft <= 0)
             {
                 EnergyLeft = 0;
-                ChangeHealth(-Mathf.RoundToInt(PlayerStats.EnergyDecay.Value));
+                TakeDamage(Mathf.RoundToInt(PlayerStats.EnergyDecay.Value));
             }
             OnEnergyChanged?.Invoke();
         }

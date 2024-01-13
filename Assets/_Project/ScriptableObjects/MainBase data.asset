@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: MainBase data
   m_EditorClassIdentifier: 
   BaseHealth: 100
-  HealthPerLevel: 10
-  CombatRadiusPerLevel: 0.5
-  BaseCombatRadius: 1.5
-  MatterProgression: 5
+  HealthPerLevel: 25
+  EnergyRegenRadiusPerLevel: 0.5
+  BaseEnergyRegenRadius: 2.5
+  XPProgression: 5
+  RegenerationPercent: 0.1
+  RequiredMatterToHeal: 5
+  PlayerHealing: 30
