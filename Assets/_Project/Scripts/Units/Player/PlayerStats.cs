@@ -10,7 +10,8 @@ namespace Selivura.Player
         public PlayerStat AttackCooldown = new PlayerStat();
         public PlayerStat ProjectileSpeed = new PlayerStat();
         public PlayerStat AttackRange = new PlayerStat();
-        public PlayerStats(float energy, float energyRegen, float energyDecay, float movementSpeed, float attackDamage, float attackCooldown, float projectileSpeed, float range)
+        public PlayerStat Penetration = new PlayerStat();
+        public PlayerStats(float energy, float energyRegen, float energyDecay, float movementSpeed, float attackDamage, float attackCooldown, float projectileSpeed, float range, int penetration)
         {
             Energy = new PlayerStat(energy);
             EnergyRegeneration = new PlayerStat(energyRegen);
@@ -20,6 +21,7 @@ namespace Selivura.Player
             AttackCooldown = new PlayerStat(attackCooldown);
             ProjectileSpeed = new PlayerStat(projectileSpeed);
             AttackRange = new PlayerStat(range);
+            Penetration = new PlayerStat(penetration);
         }
         public class Builder
         {
@@ -31,6 +33,7 @@ namespace Selivura.Player
             float attackCooldown = 0.4f;
             float projectileSpeed = 15;
             float range = 5;
+            int penetration = 2;
             public Builder WithEnergy(float energy)
             {
                 this.energy = energy;
@@ -71,9 +74,14 @@ namespace Selivura.Player
                 this.range = range;
                 return this;
             }
+            public Builder WithPenetration(int penetration)
+            {
+                this.penetration = penetration;
+                return this;
+            }
             public PlayerStats Build()
             {
-                return new PlayerStats(energy, energyRegen, energyDecay, movementSpeed, attackDamage, attackCooldown, projectileSpeed, range);
+                return new PlayerStats(energy, energyRegen, energyDecay, movementSpeed, attackDamage, attackCooldown, projectileSpeed, range, penetration);
             }
         }
     }

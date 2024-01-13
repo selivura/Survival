@@ -23,7 +23,7 @@ namespace Selivura.UI
         }
         private void ShowPurchaseMessage()
         {
-            _attentionMessage.ShowMessage($"ITEM ADDED: {_shop.ItemPrefab.DisplayName}");
+            _attentionMessage.ShowMessage($"{_shop.ItemPrefab.DisplayName} - Item acquired");
         }
     }
 }

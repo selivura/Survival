@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2561484338630287393, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: m_Name
-      value: DamageAura
+      value: DamageAuraItem
       objectReference: {fileID: 0}
     - target: {fileID: 4689635876843606925, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Icon: {fileID: 1023794233066372947, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
-  DisplayName: Base damage area field
+  DisplayName: Damage field
   Description: Deals damage to enemies near base
   Price: 15
   DpsPerBaseLevel: 1

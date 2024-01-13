@@ -24,6 +24,8 @@ namespace Selivura
             if (_damageTimer.Expired)
                 for (int i = 0; i < _insideUnits.Count; i++)
                 {
+                    if (!_insideUnits[i].gameObject.activeSelf)
+                        _insideUnits.RemoveAt(i);
                     _insideUnits[i].TakeDamage(DamagePerSecond);
                     _damageTimer = new Timer(1, Time.time);
                 }

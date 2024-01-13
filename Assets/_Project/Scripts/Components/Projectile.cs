@@ -11,6 +11,7 @@ namespace Selivura
         private float _initializationTime;
         private bool _initialized;
         public UnityEvent OnHit;
+        public int Health = 2;
         IMovement _movement;
         private void Awake()
         {
@@ -19,6 +20,7 @@ namespace Selivura
         public void Initialize(ProjectileData data, Vector2 direction)
         {
             _data = data;
+            Health = data.ProjectileHealth;
             transform.right = direction;
             _initializationTime = Time.time;
             _initialized = true;
@@ -41,8 +43,9 @@ namespace Selivura
         private void Hit(Unit unit)
         {
             unit.ChangeHealth(-_data.Damage);
+            if (Health < 1)
+                Deinitialize();
             OnHit?.Invoke();
-            Deinitialize();
         }
 
         private void Deinitialize()
@@ -58,11 +61,13 @@ namespace Selivura
         public int Damage;
         public float Speed;
         public float Lifetime = 4;
-        public ProjectileData(int damage, float speed, float lifetime)
+        public int ProjectileHealth;
+        public ProjectileData(int damage, float speed, float lifetime, int health = 2)
         {
             Damage = damage;
             Speed = speed;
             Lifetime = lifetime;
+            ProjectileHealth = health;
         }
 
         public class Builder
@@ -70,6 +75,7 @@ namespace Selivura
             int _damage = 1;
             float _speed = 15;
             float _lifeime = 3;
+            int _health = 2;
             public Builder WithDamage(int damage)
             {
                 _damage = damage;
@@ -85,9 +91,14 @@ namespace Selivura
                 _lifeime = lifetime;
                 return this;
             }
+            public Builder WithHealth(int health) 
+            {
+                _health = health;
+                return this;
+            }
             public ProjectileData Build()
             {
-                return new ProjectileData(_damage, _speed, _lifeime);
+                return new ProjectileData(_damage, _speed, _lifeime, _health);
             }
         }
     }

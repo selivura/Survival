@@ -15,5 +15,6 @@ namespace Selivura
         public float AttackCooldown = 0.4f;
         public float ProjectileSpeed = 15;
         public float AttackRange = 8;
+        public int Penetration = 2;
     }
 }

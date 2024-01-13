@@ -75,8 +75,13 @@ namespace Selivura.Player
                 {
                     Vector2 dir = Utilities.GetMouseDirection(_cam, transform.position);
                     int damage = Mathf.RoundToInt(_playerUnit.PlayerStats.AttackDamage.Value);
-                    AttackData attackData =
-                        new AttackData(damage, _playerUnit.PlayerStats.AttackCooldown.Value, _playerUnit.PlayerStats.ProjectileSpeed.Value, _playerUnit.PlayerStats.AttackRange.Value);
+                    AttackData attackData = new AttackData(
+                            damage,
+                            _playerUnit.PlayerStats.AttackCooldown.Value,
+                            _playerUnit.PlayerStats.ProjectileSpeed.Value,
+                            _playerUnit.PlayerStats.AttackRange.Value,
+                            Mathf.RoundToInt(_playerUnit.PlayerStats.Penetration.Value)
+                            );
                     _combat.Attack(dir, attackData);
                 }
             if (InteractInput)

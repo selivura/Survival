@@ -23,6 +23,7 @@ namespace Selivura.Player
                 .WithDamage(data.Damage)
                 .WithSpeed(data.ProjectileSpeed)
                 .WithLifetime(data.AttackRange / data.ProjectileSpeed)
+                .WithHealth(data.ProjectileHealth)
                 .Build();
 
             _attackCooldownTimer = new Timer(data.AttackCooldown, Time.time);

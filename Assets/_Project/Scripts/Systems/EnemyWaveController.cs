@@ -22,7 +22,7 @@ namespace Selivura
         [SerializeField] private float _peacePhaseTime = 30;
 
         [Header("Enemy spawn settings")]
-        [SerializeField] private int _enemySpawnCooldownSeconds = 1;
+        [SerializeField] private float _enemySpawnCooldown = .5f;
         [SerializeField] private WaveData[] _waveDatas;
         private WaveData _currentWaveData;
 
@@ -123,7 +123,7 @@ namespace Selivura
 
             _spawnedUnits.Add(spawned);
 
-            _enemySpawnTimer = new Timer(_enemySpawnCooldownSeconds, Time.time);
+            _enemySpawnTimer = new Timer(_enemySpawnCooldown, Time.time);
             _currentSpawnIndex++;
         }
         private Vector2 GetValidSpawnPosition(Vector2 position, Vector2 limit, float minRange, float maxRange)

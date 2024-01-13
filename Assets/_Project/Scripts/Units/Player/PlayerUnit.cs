@@ -52,6 +52,7 @@ namespace Selivura.Player
                 .WithProjectileSpeed(BasePlayerStats.ProjectileSpeed)
                 .WithMovementSpeed(BasePlayerStats.MovementSpeed)
                 .WithRange(BasePlayerStats.AttackRange)
+                .WithPenetration(BasePlayerStats.Penetration)
                 .Build();
             EnergyLeft = MaxEnergy;
         }
