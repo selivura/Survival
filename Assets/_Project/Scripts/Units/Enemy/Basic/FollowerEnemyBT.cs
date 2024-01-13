@@ -26,13 +26,10 @@ namespace Selivura
         }
         protected override Node SetupTree()
         {
-            Node root = new Selector(new List<Node>
+            Node root = new ScriptNode(new List<Node>
             {
-                new Sequence(new List<Node>
-                {
-                    new CheckTargetInAttackRange(transform, _attackDistance, _dataNode, _movement),
-                    new TaskAttack(_attackDamage, _attackCooldown, _dataNode),
-                }),
+                new CheckTargetInAttackRange(transform, _attackDistance, _dataNode, _movement),
+                new TaskAttack(_attackDamage, _attackCooldown, _dataNode),
                 new Sequence(new List<Node>
                 {
                     new TaskSearchTarget(transform,_targetSearchCooldown, _searchDistance, _targetLayerMask, _dataNode),

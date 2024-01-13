@@ -19,7 +19,7 @@ namespace Selivura
         AudioPlayer _audioPlayer;
         [Inject]
         EffectPool _effectPool;
-
+        Injector _injector;
         private SniperAttackProcessor _processor;
 
         public TaskSniperAttack(Unit me, Node dataNode, Animator animator, SniperAttackProcessor processor)
@@ -31,7 +31,11 @@ namespace Selivura
             _processor = processor;
             _unit.OnKilled.AddListener(OnKilled);
             RemoveTargetMark();
-            Injector.Instance.Inject(this);
+            if(!_injector)
+            {
+                _injector = GameObject.FindFirstObjectByType<Injector>();
+            }
+            _injector.Inject(this);
         }
         private void OnKilled(Unit a = null)
         {
@@ -54,13 +58,9 @@ namespace Selivura
         {
             Unit target = (Unit)_dataNode.GetData(FollowerEnemyBT.DataTargetKey);
 
-            Debug.Log("Checking if target exists");
             if (target == null)
             {
-                state = NodeState.Failure;
-                _isPreparing = false;
-                RemoveTargetMark();
-                Debug.Log("No target found");
+                CancelPreparation();
                 return state;
             }
             if (!_attackCDTimer.Expired)
@@ -88,9 +88,16 @@ namespace Selivura
 
         }
 
+        private void CancelPreparation()
+        {
+            state = NodeState.Failure;
+            _isPreparing = false;
+            _processor.CancelPreparation(_animator);
+            RemoveTargetMark();
+        }
+
         private void StartPreparing()
         {
-            Debug.Log("Preparing");
             _isPreparing = true;
             _attackPrepareTimer = new Timer(_processor.AttackPrepare, Time.time);
             _processor.PlayPrepareEffects(_animator, _audioPlayer);
@@ -112,7 +119,6 @@ namespace Selivura
         }
         private void Shoot(Unit target)
         {
-            Debug.Log("Shooting");
             _isPreparing = false;
 
             _processor.PlayShootEffects(_animator, _audioPlayer, _effectPool, target.transform.position);
@@ -128,7 +134,6 @@ namespace Selivura
             {
                 _dataNode.ClearData(FollowerEnemyBT.DataTargetKey);
             }
-            Debug.Log("Reloading");
         }
 
         public class Builder

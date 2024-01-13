@@ -14,7 +14,7 @@ namespace Selivura.UI
         private AudioPlayer _audioPlayer;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
         }
         private void Start()
         {

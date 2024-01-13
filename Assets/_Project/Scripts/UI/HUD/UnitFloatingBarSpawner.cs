@@ -13,7 +13,7 @@ namespace Selivura.UI
         private void Awake()
         {
             _cam = Camera.main;
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
         }
         private void OnEnable()
         {

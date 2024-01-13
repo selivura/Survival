@@ -10,7 +10,7 @@ namespace Selivura
         protected MatterSpawner matterSpawner;
         protected virtual void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
         }
     }
 }

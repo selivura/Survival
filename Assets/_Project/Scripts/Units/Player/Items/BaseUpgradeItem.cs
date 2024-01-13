@@ -12,7 +12,7 @@ namespace Selivura
         public override void OnPickup(PlayerUnit player)
         {
             base.OnPickup(player);
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
             mainBase.OnLevelUp.AddListener(OnBaseLevelUp);
         }
         public override void OnRemove(PlayerUnit player)

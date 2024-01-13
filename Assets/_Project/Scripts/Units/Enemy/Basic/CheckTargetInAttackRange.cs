@@ -34,14 +34,12 @@ namespace Selivura
                 {
                     _movement.Stop();
                 }
-                Debug.Log("Target in range");
                 state = NodeState.Succes;
                 return state;
             }
             else
             {
                 _dataNode.ClearData(FollowerEnemyBT.DataTargetKey);
-                Debug.Log("Target NOT range");
             }
 
             state = NodeState.Failure;

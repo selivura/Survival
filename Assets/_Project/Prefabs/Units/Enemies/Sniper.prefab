@@ -646,7 +646,7 @@ MonoBehaviour:
   _attackDistance: 8
   _animator: {fileID: 4143265988413106892}
   _sniperAttackProcessor: {fileID: 11400000, guid: cdb44c21be6da0d4a8da8a01214c63a1, type: 2}
-  _moveSpeed: 1
+  _moveSpeed: 2
 --- !u!114 &4563517116520129669
 MonoBehaviour:
   m_ObjectHideFlags: 0

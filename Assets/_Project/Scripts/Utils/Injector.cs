@@ -19,18 +19,8 @@ namespace Selivura
     {
         const BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
         readonly Dictionary<Type, object> registry = new Dictionary<Type, object>();
-        public static Injector Instance { get; private set; }
         protected void Awake()
         {
-            if(Instance != null)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                Instance = this;
-            }
-
             var providers = FindMonoBehaviours().OfType<IDependecyProvider>();
             foreach (var provider in providers)
             {
@@ -106,7 +96,6 @@ namespace Selivura
                 }
             }
         }
-
         static MonoBehaviour[] FindMonoBehaviours()
         {
             return FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.InstanceID);

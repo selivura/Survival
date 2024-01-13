@@ -18,7 +18,7 @@ namespace Selivura.UI
         GameStateController _gameStateController;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
             Show(false);
         }
         public void Show(bool show)

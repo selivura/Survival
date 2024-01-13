@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2561484338630287393, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: m_Name
-      value: BoosterItem
+      value: AttackSpeedItem
       objectReference: {fileID: 0}
     - target: {fileID: 4689635876843606925, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: Description
-      value: Decreases attack cooldown by 15%
+      value: Atack cooldown -8%
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: DisplayName
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592245786748056874, guid: de9ed09e538728144a151663b12900d8, type: 3}
       propertyPath: AttackCooldown.Value
-      value: -0.15
+      value: -0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

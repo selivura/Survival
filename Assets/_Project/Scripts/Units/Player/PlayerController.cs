@@ -35,7 +35,7 @@ namespace Selivura.Player
         PauseController _pauseController;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
         }
         private void OnEnable()
         {

@@ -11,7 +11,7 @@ namespace Selivura
         ItemPoolManager _itemPoolManager;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
             _shop = GetComponent<Shop>();
         }
         private void OnEnable()

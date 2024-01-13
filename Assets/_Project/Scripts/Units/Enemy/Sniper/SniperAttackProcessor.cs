@@ -31,6 +31,10 @@ namespace Selivura
             animator.SetBool(PrepareParameterName, false);
             effectPool.GetOrCreatedEffect(HitEffect).transform.position = targetPosition;
         }
+        public void CancelPreparation(Animator animator)
+        {
+            animator.SetBool(PrepareParameterName, false);
+        }
 
     }
 }

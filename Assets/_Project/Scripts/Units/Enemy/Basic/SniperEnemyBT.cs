@@ -27,18 +27,16 @@ namespace Selivura
         }
         protected override Node SetupTree()
         {
-            Node root = new Selector(new List<Node>
+            Node root = new ScriptNode(new List<Node>
             {
-                new Sequence(new List<Node>
-                {
-                    new CheckTargetInAttackRange(transform, _attackDistance, _dataNode, _movement),
+                new CheckTargetInAttackRange(transform, _attackDistance, _dataNode, _movement),
                     new TaskSniperAttack.Builder()
-                    .WithUnit(GetComponent<Unit>())
-                    .WithData(_dataNode)
-                    .WithAnimator(_animator)
-                    .WithProcessor(_sniperAttackProcessor)
-                    .Build(),
-                }),
+                        .WithUnit(GetComponent<Unit>())
+                        .WithData(_dataNode)
+                        .WithAnimator(_animator)
+                        .WithProcessor(_sniperAttackProcessor)
+                        .Build(),
+
                 new Sequence(new List<Node>
                 {
                     new TaskSearchTarget(transform,_targetSearchCooldown, _searchDistance, _targetLayerMask, _dataNode),

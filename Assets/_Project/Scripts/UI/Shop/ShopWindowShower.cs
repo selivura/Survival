@@ -16,7 +16,7 @@ namespace Selivura.UI
         OverlayWindowsContainer _overlayWindowsContainer;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
         }
         public bool CanInteract(PlayerUnit interactor)
         {

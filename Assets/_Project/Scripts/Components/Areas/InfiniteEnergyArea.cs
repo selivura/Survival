@@ -12,11 +12,12 @@ namespace Selivura
         protected bool playerInRange = false;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
         }
         protected override void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject == _player.gameObject)
+            if (_player != null)
+                if (collision.gameObject == _player.gameObject)
             {
                 playerInRange = true;
             }
@@ -34,6 +35,7 @@ namespace Selivura
         }
         protected override void OnTriggerExit2D(Collider2D collision)
         {
+            if(_player != null)
             if (collision.gameObject == _player.gameObject)
             {
                 playerInRange = false;

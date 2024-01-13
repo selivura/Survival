@@ -20,7 +20,7 @@ namespace Selivura.UI
         GameStateController _gameStateController;
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
             OpenMenu(false);
         }
         public void OpenMenu(bool value)

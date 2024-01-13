@@ -15,7 +15,7 @@ namespace Selivura
 
         private void Awake()
         {
-            Injector.Instance.Inject(this);
+             FindFirstObjectByType<Injector>().Inject(this);
         }
         public void PlayRandomSound()
         {
