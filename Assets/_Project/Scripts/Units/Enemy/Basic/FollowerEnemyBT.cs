@@ -12,9 +12,8 @@ namespace Selivura
         [SerializeField] LayerMask _targetLayerMask = 1 << 10 | 1 << 11;
         [SerializeField] float _targetSearchCooldown = 1;
 
-        [SerializeField] int _attackDamage = 25;
         [SerializeField] float _attackDistance = 2;
-        [SerializeField] float _attackCooldown = 1;
+        [SerializeField] AttackTaskData _attackData;
 
         [SerializeField] float _moveSpeed = 1;
         IMovement _movement;
@@ -29,7 +28,7 @@ namespace Selivura
             Node root = new ScriptNode(new List<Node>
             {
                 new CheckTargetInAttackRange(transform, _attackDistance, _dataNode, _movement),
-                new TaskAttack(_attackDamage, _attackCooldown, _dataNode),
+                new TaskAttack(_attackData, _dataNode),
                 new Sequence(new List<Node>
                 {
                     new TaskSearchTarget(transform,_targetSearchCooldown, _searchDistance, _targetLayerMask, _dataNode),

@@ -22,14 +22,23 @@ namespace Selivura
             _targetLayerMask = targetLayerMask;
             _dataNode = dataNode;
         }
-        private NodeState SearchForTarget()
+        public override NodeState Evaluate()
         {
+            if(_dataNode.GetData(FollowerEnemyBT.DataTargetKey) !=null)
+            {
+                state = NodeState.Succes;
+                return state;
+            }
+            if (!_searchTimer.Expired)
+            {
+                state = NodeState.Running;
+                return state;
+            }
             _searchTimer = new Timer(_searchCooldown, Time.time);
-
             var foundTargets = Physics2D.OverlapCircleAll(_transform.position, _searchRadius, _targetLayerMask);
             if (foundTargets.Length <= 0)
             {
-                state = NodeState.Running;
+                state = NodeState.Failure;
                 return state;
             }
 
@@ -47,7 +56,7 @@ namespace Selivura
             }
             if (nearestTarget.TryGetComponent(out Unit target))
             {
-                _dataNode.SetData(FollowerEnemyBT.DataTargetKey,target);
+                _dataNode.SetData(FollowerEnemyBT.DataTargetKey, target);
                 state = NodeState.Succes;
                 return state;
             }
@@ -57,20 +66,6 @@ namespace Selivura
                 state = NodeState.Running;
                 return state;
             }
-        }
-        public override NodeState Evaluate()
-        {
-            if(!_searchTimer.Expired)
-            {
-                state = NodeState.Running;
-                return state;
-            }
-            else
-            {
-                state = SearchForTarget();
-            }
-            state = NodeState.Running;
-            return state;
         }
     }
 }

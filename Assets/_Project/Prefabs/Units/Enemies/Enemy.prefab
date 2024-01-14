@@ -201,9 +201,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3072
   _targetSearchCooldown: 0.5
-  _attackDamage: 5
   _attackDistance: 2
-  _attackCooldown: 1
+  _attackData: {fileID: 11400000, guid: 535775acc0dff62479840a69fe54ae41, type: 2}
   _moveSpeed: 2
 --- !u!58 &8455989593262893777
 CircleCollider2D:

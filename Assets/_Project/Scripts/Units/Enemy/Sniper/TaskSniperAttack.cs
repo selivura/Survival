@@ -21,6 +21,7 @@ namespace Selivura
         EffectPool _effectPool;
         Injector _injector;
         private SniperAttackProcessor _processor;
+        private Transform _transform;
 
         public TaskSniperAttack(Unit me, Node dataNode, Animator animator, SniperAttackProcessor processor)
         {

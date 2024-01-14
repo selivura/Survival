@@ -22,15 +22,15 @@ namespace Selivura
         public override NodeState Evaluate()
         {
             Unit target = (Unit)_dataNode.GetData(FollowerEnemyBT.DataTargetKey);
-            if(target == null)
+            if (target == null)
             {
-                state = NodeState.Failure; 
+                state = NodeState.Failure;
                 return state;
             }
             float targetDistance = Vector2.Distance(target.transform.position, _transform.position);
-            if( targetDistance <= _attackRange ) 
+            if (targetDistance <= _attackRange)
             {
-                if(_movement != null)
+                if (_movement != null)
                 {
                     _movement.Stop();
                 }

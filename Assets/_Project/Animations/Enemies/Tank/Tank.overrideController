@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tank
+  m_Controller: {fileID: 9100000, guid: e5a0af9a39ad6e04485d6707a52e8b50, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7b6070fdafb8bf24f8b8bff1c00694bb, type: 2}
+    m_OverrideClip: {fileID: -8080203828906167154, guid: 772d5f175002aeb47b7cd9ec0a6daa6f, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 7ca7752f60fc04f4189ad85911028641, type: 2}
+    m_OverrideClip: {fileID: -510344224830163122, guid: 772d5f175002aeb47b7cd9ec0a6daa6f, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 363f306193cc36a4aa7b8485340c00c8, type: 2}
+    m_OverrideClip: {fileID: 7206376233072713484, guid: 772d5f175002aeb47b7cd9ec0a6daa6f, type: 3}

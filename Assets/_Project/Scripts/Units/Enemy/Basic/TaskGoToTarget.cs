@@ -29,15 +29,14 @@ namespace Selivura
                 return state;
             }
             float targetDistance = Vector2.Distance(target.transform.position, _transform.position);
-            _movement.Move(_transform.position.NormalizedDirectionTo(target.transform.position), _moveSpeed);
-
             if (targetDistance <= _stopDistance)
             {
                 _movement.Stop();
                 state = NodeState.Succes;
                 return state;
             }
-
+            _movement.Move(_transform.position.NormalizedDirectionTo(target.transform.position), _moveSpeed);
+                
             state = NodeState.Running;
             return state;
         }
