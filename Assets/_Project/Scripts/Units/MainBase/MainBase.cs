@@ -72,7 +72,7 @@ namespace Selivura
         }
         public bool CanInteract(PlayerUnit interactor)
         {
-            return interactor.MatterHarvested >= 0;
+            return interactor.MatterHarvested >= XPToLevelUp;
         }
     }
 }

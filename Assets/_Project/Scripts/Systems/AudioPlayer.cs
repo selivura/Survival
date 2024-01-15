@@ -1,4 +1,6 @@
+using Selivura.ObjectPooling;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
@@ -10,14 +12,10 @@ namespace Selivura
     }
     public class AudioPlayer : MonoBehaviour, IDependecyProvider
     {
-        AudioSource _sfxAudioSource;
-        AudioSource _bgmAudioSource;
         private const string _globalVolumePlayerPrefsKey = "Global_Volume";
-        private const string _sfxVolumePlayerPrefsKey = "SFX_Volume";
-        private const string _bgmVolumePlayerPrefsKey = "BGM_Volume";
-
-        public float SFXVolume { get; private set; }
-        public float BGMVolume { get; private set; }
+        private const string _channelVolumePrefix = "ChannelVolume_";
+        private ObjectPool<AudioInstance> _audioPool;
+        public List<float> Volumes { get; private set; } = new List<float>();
         [Provide]
         public AudioPlayer Provide()
         {
@@ -25,26 +23,22 @@ namespace Selivura
         }
         protected void Awake()
         {
-            _sfxAudioSource = CreateAudioSource("SFX");
-            _bgmAudioSource = CreateAudioSource("BGM");
+            _audioPool = new ObjectPool<AudioInstance>(new GameObject("AudioInstance").AddComponent<AudioInstance>(), 50, transform);
 
             AudioListener.volume = PlayerPrefs.GetFloat(_globalVolumePlayerPrefsKey, 0.75f);
-            SFXVolume = PlayerPrefs.GetFloat(_sfxVolumePlayerPrefsKey, 1);
-            BGMVolume = PlayerPrefs.GetFloat(_bgmVolumePlayerPrefsKey, 1);
-        }
-
-        private AudioSource CreateAudioSource(string name)
-        {
-            GameObject sfxObject = new GameObject(name);
-            sfxObject.transform.SetParent(transform, false);
-            return sfxObject.AddComponent<AudioSource>();
+            for (int i = 0; i < Enum.GetValues(typeof(SoundChannel)).Length; i++)
+            {
+                Volumes.Add(PlayerPrefs.GetFloat(_channelVolumePrefix + i.ToString(), 1));
+            }
         }
 
         private void SaveAllCurrentParameters()
         {
             PlayerPrefs.SetFloat(_globalVolumePlayerPrefsKey, AudioListener.volume);
-            PlayerPrefs.SetFloat(_sfxVolumePlayerPrefsKey, SFXVolume);
-            PlayerPrefs.SetFloat(_bgmVolumePlayerPrefsKey, BGMVolume);
+            for (int i = 0; i < Enum.GetValues(typeof(SoundChannel)).Length; i++)
+            {
+                PlayerPrefs.SetFloat(_channelVolumePrefix + i.ToString(), Volumes[i]);
+            }
         }
         public void SetGlobalVolume(float value)
         {
@@ -53,54 +47,22 @@ namespace Selivura
         }
         public void SetChannelVolume(float volume, SoundChannel channel)
         {
-            switch (channel)
-            {
-                case SoundChannel.SFX:
-                    SFXVolume = volume;
-                    break;
-                case SoundChannel.BGM:
-                    BGMVolume = volume;
-                    break;
-                default:
-                    SFXVolume = volume;
-                    break;
-            }
+           Volumes[(int)channel] = volume;
            SaveAllCurrentParameters();
         }
         public float GetChannelVolume(SoundChannel channel)
         {
-            switch (channel)
-            {
-                case SoundChannel.SFX:
-                    return SFXVolume;
-                case SoundChannel.BGM:
-                    return BGMVolume;
-                default:
-                    return AudioListener.volume;
-            }
+           return Volumes[(int)channel];
         }
         public void PlaySound(AudioClip clip, SoundParameters parameters)
         {
-            switch (parameters.Channel)
-            {
-                case SoundChannel.SFX:
-                    _sfxAudioSource.PlayOneShotWithParameters(clip, parameters);
-                    break;
-                case SoundChannel.BGM:
-                    _bgmAudioSource.PlayOneShotWithParameters(clip, parameters);
-                    break;
-                default:
-                    _sfxAudioSource.PlayOneShotWithParameters(clip, parameters);
-                    break;
-            }
-        }
-
-        internal void PlaySound(object shootSound, SoundParameters soundParameters)
-        {
-            throw new NotImplementedException();
+            var instance = _audioPool.GetFreeElement();
+            instance.SetPitch(UnityEngine.Random.Range(parameters.MinPitch, parameters.MaxPitch));
+            instance.SetVolume(parameters.Volume * GetChannelVolume(parameters.Channel));
+            instance.Play(clip);
         }
     }
-    [Serializable]
+    [System.Serializable]
     public class SoundParameters
     {
         public SoundChannel Channel = SoundChannel.SFX;

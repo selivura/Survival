@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Selivura.BehaviorTrees;
+using Pathfinding;
 
 namespace Selivura
 {
+    [RequireComponent(typeof(Seeker))]
     [RequireComponent(typeof(IMovement))]
     public class FollowerEnemyBT : BehaviourTree
     {
@@ -17,11 +19,13 @@ namespace Selivura
 
         [SerializeField] float _moveSpeed = 1;
         IMovement _movement;
+        private Seeker _seeker;
         private Node _dataNode = new Node(new List<Node>());
         public const string DataTargetKey = "target";
         private void Awake()
         {
             _movement = GetComponent<IMovement>();
+            _seeker = GetComponent<Seeker>();
         }
         protected override Node SetupTree()
         {
@@ -32,7 +36,7 @@ namespace Selivura
                 new Sequence(new List<Node>
                 {
                     new TaskSearchTarget(transform,_targetSearchCooldown, _searchDistance, _targetLayerMask, _dataNode),
-                    new TaskGoToTarget(transform, _moveSpeed, _movement, _attackDistance, _dataNode),
+                    new TaskGoToTarget(transform, _moveSpeed, _movement, _attackDistance, _dataNode, _seeker),
                 }),
             });
              

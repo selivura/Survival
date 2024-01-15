@@ -11,7 +11,8 @@ namespace Selivura
         {
             base.OnPickup(player);
             _spawned = Instantiate(_droneBrefab);
-            _spawned.Summoner = player;
+            _spawned.Initialize(player);
+            _spawned.transform.position = player.transform.position;
         }
         public override void OnRemove(PlayerUnit player)
         {

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14872041fd65ce04e9a372d32553b2bd, type: 3}
   m_Name: Player data
   m_EditorClassIdentifier: 
-  EnergyDecayCooldown: 0.1
+  EnergyDecayCooldown: 1
+  NoEnergyHealthDamage: 25
   Energy: 70
   EnergyRegeneration: 25
   EnergyDecay: 4
@@ -21,3 +22,4 @@ MonoBehaviour:
   AttackCooldown: 0.4
   ProjectileSpeed: 18
   AttackRange: 8
+  Penetration: 0

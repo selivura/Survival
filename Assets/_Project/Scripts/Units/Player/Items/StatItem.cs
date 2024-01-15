@@ -12,6 +12,7 @@ namespace Selivura
         public PlayerStatModifier AttackCooldown = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
         public PlayerStatModifier ProjectileSpeed = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
         public PlayerStatModifier AttackRange = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
+        public PlayerStatModifier Penetration = new PlayerStatModifier(0, StatModType.Flat, 0, "Item");
         public override void OnPickup(PlayerUnit player)
         {
             base.OnPickup(player);
@@ -24,6 +25,7 @@ namespace Selivura
             playerStats.AttackCooldown.AddModifier(AttackCooldown);
             playerStats.ProjectileSpeed.AddModifier(ProjectileSpeed);
             playerStats.AttackRange.AddModifier(AttackRange);
+            playerStats.Penetration.AddModifier(Penetration);
         }
         public override void OnRemove(PlayerUnit player)
         {
@@ -37,6 +39,7 @@ namespace Selivura
             playerStats.AttackCooldown.RemoveModifier(AttackCooldown);
             playerStats.ProjectileSpeed.RemoveModifier(ProjectileSpeed);
             playerStats.AttackRange.RemoveModifier(AttackRange);
+            playerStats.Penetration.RemoveModifier(Penetration);
         }
     }
 }

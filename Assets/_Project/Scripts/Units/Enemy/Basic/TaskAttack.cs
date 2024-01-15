@@ -1,5 +1,4 @@
 using Selivura.BehaviorTrees;
-using UnityEditor;
 using UnityEngine;
 
 namespace Selivura
@@ -34,7 +33,8 @@ namespace Selivura
             }
 
             _attackTimer = new Timer(_attackData.AttackCooldown, Time.time);
-            _attackData.PlayAttackeffects(_audioPlayer);
+            if(_audioPlayer)
+                _attackData.PlayAttackeffects(_audioPlayer);
             target.TakeDamage(_attackData.AttackDamage);
             if(target.CurrentHealth <= 0)
             {

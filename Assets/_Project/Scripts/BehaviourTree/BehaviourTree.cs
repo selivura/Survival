@@ -4,16 +4,16 @@ namespace Selivura.BehaviorTrees
 {
     public abstract class BehaviourTree : MonoBehaviour
     {
-        private Node _root = null;
+        protected Node root = null;
         protected void OnEnable()
         {
-            _root = SetupTree();
+            root = SetupTree();
         }
         protected void FixedUpdate()
         {
-            if (_root != null)
+            if (root != null)
             {
-                _root.Evaluate();
+                root.Evaluate();
             }
         }
         protected abstract Node SetupTree();

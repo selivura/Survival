@@ -6,10 +6,14 @@ namespace Selivura.Tests
 {
     public static class TestUtils
     {
-        public static void Setup()
+        public static void CreateInjector()
         {
             GameObject go = new GameObject("Injector");
             go.AddComponent<Injector>();
+        }
+        public static AudioPlayer CreateAudioPlayer()
+        {
+            return new GameObject("AudioPlayer").AddComponent<AudioPlayer>();
         }
         public static PlayerUnit CreatePlayer()
         {

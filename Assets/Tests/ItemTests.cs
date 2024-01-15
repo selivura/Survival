@@ -11,7 +11,7 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator RegenItemTest()
         {
-            TestUtils.Setup();
+            TestUtils.CreateInjector();
             var player = TestUtils.CreatePlayer();
             player.TakeDamage(5);
             int playerHealthBefor = player.CurrentHealth;

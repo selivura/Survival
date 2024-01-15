@@ -33,10 +33,14 @@ namespace Selivura.UI
             Container.transform.localScale = new Vector3(0, 0, 1);
             Container.transform.DOScale(new Vector3(1, 1), _windowShowDuration);
         }
-        public void Deinitialize()
+        public void HideWindow()
         {
             Container.transform.DOScale(new Vector3(0, 0, 1), _windowHideDuration);
-            Container.transform.DOKill();
+            Invoke(nameof(Deinitialize), _windowHideDuration);
+        }
+        private void Deinitialize()
+        {
+            Container.transform.DOComplete();
             Destroy(gameObject, _windowHideDuration);
         }
     }

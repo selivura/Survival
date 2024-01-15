@@ -58,9 +58,9 @@ namespace Selivura.Player
         }
         public void AddItem(Item itemPrefab)
         {
-            Inventory.Add(itemPrefab);
             var spawned = Instantiate(itemPrefab, transform);
             spawned.OnPickup(this);
+            Inventory.Add(spawned);
         }
         public void GiveAllMatterToBase(MainBase mainBase)
         {
@@ -85,7 +85,7 @@ namespace Selivura.Player
             if (EnergyLeft <= 0)
             {
                 EnergyLeft = 0;
-                TakeDamage(Mathf.RoundToInt(PlayerStats.EnergyDecay.Value));
+                TakeDamage(Mathf.RoundToInt(BasePlayerStats.NoEnergyHealthDamage));
             }
             OnEnergyChanged?.Invoke();
         }

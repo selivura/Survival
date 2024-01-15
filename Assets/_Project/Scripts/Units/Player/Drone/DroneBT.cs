@@ -1,3 +1,4 @@
+using Pathfinding;
 using Selivura.BehaviorTrees;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Selivura
         [SerializeField] float _searchDistance = 25;
         [SerializeField] LayerMask _targetLayerMask = 1 << 7;
 
-        public Unit Summoner;
+        private Unit _summoner;
         [SerializeField] float _summonerFollowStopDistance = 5;
 
         [SerializeField] float _targetSearchCooldown = 1;
@@ -18,11 +19,18 @@ namespace Selivura
 
         [SerializeField] float _moveSpeed = 1;
         IMovement _movement;
+        private Seeker _seeker;
         private Node _dataNode = new Node(new List<Node>());
         public const string DataTargetKey = "target";
         private void Awake()
         {
             _movement = GetComponent<IMovement>();
+            _seeker = GetComponent<Seeker>();
+        }
+        public void Initialize(Unit summoner)
+        {
+            _summoner = summoner;
+            this.root = SetupTree();
         }
         protected override Node SetupTree()
         {
@@ -37,8 +45,8 @@ namespace Selivura
                 new IfNode
                 (
                     new TaskSearchTarget(transform,_targetSearchCooldown, _searchDistance, _targetLayerMask, _dataNode),
-                    new TaskGoToTarget(transform, _moveSpeed, _movement, _attackData.AttackRange, _dataNode),
-                    new TaskFollowSummoner(Summoner, _movement, _summonerFollowStopDistance, _moveSpeed, transform)
+                    new TaskGoToTarget(transform, _moveSpeed, _movement, _attackData.AttackRange, _dataNode,_seeker),
+                    new TaskFollowSummoner(_summoner, _movement, _summonerFollowStopDistance, _moveSpeed, transform)
                 ),
             });
 

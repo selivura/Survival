@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840b117db2cbc704082d9b21a556e220, type: 3}
+  m_Name: DefaultSurvivalSettings
+  m_EditorClassIdentifier: 
+  MinEnemySpwanRange: 15
+  MaxEnemySpwanRange: 20
+  EnemySpwanLimitation: {x: 95, y: 95}
+  PeacePhaseTime: 30
+  EnemyHealthPerDifficultyMultiplier: 1.5
+  EnemySpawnCooldown: 0.5
+  WaveDatas:
+  - {fileID: 11400000, guid: bb84afca3ce9ee54f9a4a780e42394a6, type: 2}
+  - {fileID: 11400000, guid: ef2ff787962630d48872f8b1f08abfc9, type: 2}
+  - {fileID: 11400000, guid: 306562764a194094eb86725ec8e5572a, type: 2}
+  - {fileID: 11400000, guid: 1791841f5d71cd24bb8aa2a5331726f5, type: 2}
+  - {fileID: 11400000, guid: d5802872aa7d88740959dd7aa37dc47e, type: 2}
+  - {fileID: 11400000, guid: b2356608c389eee488929a8281feb045, type: 2}
+  - {fileID: 11400000, guid: 410d1215226f92048b3f9fe30408f649, type: 2}
+  - {fileID: 11400000, guid: 871628295fc3b42489266c475c732092, type: 2}
+  - {fileID: 11400000, guid: 8eb9c397c5430cb438bda2e99054b268, type: 2}
+  - {fileID: 11400000, guid: b519add2f6de8c04caa6ac8ed76e8187, type: 2}

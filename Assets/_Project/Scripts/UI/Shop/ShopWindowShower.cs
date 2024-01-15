@@ -31,7 +31,7 @@ namespace Selivura.UI
         }
         private void DespawnWindow()
         {
-            _current.Deinitialize();
+            _current.HideWindow();
             _current = null;
         }
         private void FixedUpdate()

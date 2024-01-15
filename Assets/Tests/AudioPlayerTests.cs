@@ -13,8 +13,7 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator AudioPlayerGlobalVolumeTest()
         {
-            yield return SceneManager.LoadSceneAsync(0);
-            AudioPlayer audioPlayer = GameObject.FindAnyObjectByType<AudioPlayer>();
+            AudioPlayer audioPlayer = TestUtils.CreateAudioPlayer();
             yield return new WaitForFixedUpdate();
             float volumeBeforeTest = AudioListener.volume;
             audioPlayer.SetGlobalVolume(0.123f);
@@ -26,31 +25,27 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator AudioPlayerSFXVolumeTest()
         {
-            yield return SceneManager.LoadSceneAsync(0);
-            AudioPlayer audioPlayer = GameObject.FindAnyObjectByType<AudioPlayer>();
-            yield return new WaitForFixedUpdate();
-            float volumeBeforeTest = audioPlayer.GetChannelVolume(SoundChannel.SFX);
-
-            audioPlayer.SetChannelVolume(0.123f, SoundChannel.SFX);
-            Assert.AreEqual(0.123f, audioPlayer.GetChannelVolume(SoundChannel.SFX));
-
-            audioPlayer.SetChannelVolume(volumeBeforeTest, SoundChannel.SFX);
-            Assert.AreEqual(volumeBeforeTest, AudioListener.volume);
+            yield return ChannelTest(SoundChannel.SFX);
         }
-
+       
         [UnityTest]
         public IEnumerator AudioPlayerBGMVolumeTest()
         {
-            yield return SceneManager.LoadSceneAsync(0);
-            AudioPlayer audioPlayer = GameObject.FindAnyObjectByType<AudioPlayer>();
-            yield return new WaitForFixedUpdate();
-            float volumeBeforeTest = audioPlayer.GetChannelVolume(SoundChannel.BGM);
-
-            audioPlayer.SetChannelVolume(0.123f, SoundChannel.BGM);
-            Assert.AreEqual(0.123f, audioPlayer.GetChannelVolume(SoundChannel.BGM));
-
-            audioPlayer.SetChannelVolume(volumeBeforeTest, SoundChannel.BGM);
-            Assert.AreEqual(volumeBeforeTest, AudioListener.volume);
+            yield return ChannelTest(SoundChannel.BGM);
         }
+        public IEnumerator ChannelTest(SoundChannel channel)
+        {
+            AudioPlayer audioPlayer = TestUtils.CreateAudioPlayer();
+            yield return new WaitForFixedUpdate();
+            float volumeBeforeTest = audioPlayer.GetChannelVolume(channel);
+
+            audioPlayer.SetChannelVolume(0.123f, channel);
+            Assert.AreEqual(0.123f, audioPlayer.GetChannelVolume(channel));
+
+            audioPlayer.SetChannelVolume(volumeBeforeTest, channel);
+            Assert.AreEqual(volumeBeforeTest, audioPlayer.GetChannelVolume(channel));
+        }
+
+       
     }
 }

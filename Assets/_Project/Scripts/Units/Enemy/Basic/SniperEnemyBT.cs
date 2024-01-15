@@ -1,3 +1,4 @@
+using Pathfinding;
 using Selivura.BehaviorTrees;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 namespace Selivura
 {
+    [RequireComponent(typeof(Seeker))]
     [RequireComponent(typeof(IMovement))]
     [RequireComponent(typeof(Unit))]
     public class SniperEnemyBT : BehaviourTree
@@ -19,11 +21,13 @@ namespace Selivura
         [SerializeField] SniperAttackProcessor _sniperAttackProcessor;
 
         [SerializeField] float _moveSpeed = 1;
+        Seeker _seeker;
         IMovement _movement;
         private Node _dataNode = new Node(new List<Node>());
         private void Awake()
         {
             _movement = GetComponent<IMovement>();
+            _seeker = GetComponent<Seeker>();
         }
         protected override Node SetupTree()
         {
@@ -40,7 +44,7 @@ namespace Selivura
                 new Sequence(new List<Node>
                 {
                     new TaskSearchTarget(transform,_targetSearchCooldown, _searchDistance, _targetLayerMask, _dataNode),
-                    new TaskGoToTarget(transform, _moveSpeed, _movement, _attackDistance, _dataNode),
+                    new TaskGoToTarget(transform, _moveSpeed, _movement, _attackDistance, _dataNode,_seeker),
                 }),
             });
 

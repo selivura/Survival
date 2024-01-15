@@ -11,7 +11,7 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator EffectDespawnTest()
         {
-            TestUtils.Setup();
+            TestUtils.CreateInjector();
 
             Effect effect = new GameObject("effect").AddComponent<Effect>();
             effect.Despawn();
@@ -21,7 +21,7 @@ namespace Selivura.Tests
         [UnityTest]
         public IEnumerator EffectDespawnLifetimeTest()
         {
-            TestUtils.Setup();
+            TestUtils.CreateInjector();
 
             Effect effect = new GameObject("effect").AddComponent<Effect>();
             float lifetime = 2;

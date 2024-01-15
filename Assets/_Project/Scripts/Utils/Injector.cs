@@ -44,7 +44,7 @@ namespace Selivura
                 var resolvedInstance = Resolve(fieldType);
                 if (resolvedInstance == null)
                 {
-                    throw new Exception($"Failed to inject (BRUH) {fieldType.Name} int {type.Name}");
+                    throw new Exception($"Failed to inject (BRUH) {fieldType.Name} into {type.Name}");
                 }
 
                 injectableField.SetValue(instance, resolvedInstance);

@@ -22,13 +22,23 @@ namespace Selivura
         protected override void FixedUpdate()
         {
             if (_damageTimer.Expired)
+            {
+                List<Unit> inactive = new List<Unit>();
                 for (int i = 0; i < _insideUnits.Count; i++)
                 {
                     if (!_insideUnits[i].gameObject.activeSelf)
-                        _insideUnits.RemoveAt(i);
+                    {
+                        inactive.Add(_insideUnits[i]);
+                        continue;
+                    }
                     _insideUnits[i].TakeDamage(DamagePerSecond);
                     _damageTimer = new Timer(1, Time.time);
                 }
+                foreach (Unit unit in inactive) 
+                {
+                    _insideUnits.Remove(unit);
+                }
+            }
         }
     }
 }

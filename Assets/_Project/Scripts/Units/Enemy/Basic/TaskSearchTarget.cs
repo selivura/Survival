@@ -26,20 +26,39 @@ namespace Selivura
         {
             if(_dataNode.GetData(FollowerEnemyBT.DataTargetKey) !=null)
             {
-                state = NodeState.Succes;
-                return state;
+                var newTarget = TryGetTarget();
+                if (newTarget != null)
+                {
+                    _dataNode.SetData(FollowerEnemyBT.DataTargetKey, newTarget);
+                }
             }
+            else
+            {
+                var newTarget = TryGetTarget();
+                if(newTarget == null) 
+                { 
+                    state = NodeState.Failure;
+                    return state;
+                }
+                else
+                {
+                    _dataNode.SetData(FollowerEnemyBT.DataTargetKey, newTarget);
+                }
+            }
+            state = NodeState.Succes;
+            return state;
+        }
+        private Unit TryGetTarget()
+        {
             if (!_searchTimer.Expired)
             {
-                state = NodeState.Running;
-                return state;
+                return null;
             }
             _searchTimer = new Timer(_searchCooldown, Time.time);
             var foundTargets = Physics2D.OverlapCircleAll(_transform.position, _searchRadius, _targetLayerMask);
             if (foundTargets.Length <= 0)
             {
-                state = NodeState.Failure;
-                return state;
+                return null;
             }
 
             float nearestDistance = float.PositiveInfinity;
@@ -56,16 +75,9 @@ namespace Selivura
             }
             if (nearestTarget.TryGetComponent(out Unit target))
             {
-                _dataNode.SetData(FollowerEnemyBT.DataTargetKey, target);
-                state = NodeState.Succes;
-                return state;
+                return target;
             }
-            else
-            {
-                _dataNode.ClearData(FollowerEnemyBT.DataTargetKey);
-                state = NodeState.Running;
-                return state;
-            }
+            return null;
         }
     }
 }

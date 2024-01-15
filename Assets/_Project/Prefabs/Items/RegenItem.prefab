@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Icon: {fileID: -4522998300103112336, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
-  DisplayName: Nanomachine prototype
+  DisplayName: Nanomachine v1
   Description: Heals you over time
   Price: 15
   _regenPerSecond: 1
