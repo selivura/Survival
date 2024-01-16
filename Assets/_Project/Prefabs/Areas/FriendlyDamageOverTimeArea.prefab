@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8749637133873450857, guid: 7dd91b28bbe75bf41bb424723db5702b, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: -3221390437115404245, guid: 907ffd102a3b2e449950d2b99c1f010c, type: 3}
     m_RemovedComponents:
     - {fileID: 2937147465260909911, guid: 7dd91b28bbe75bf41bb424723db5702b, type: 3}
     m_RemovedGameObjects: []

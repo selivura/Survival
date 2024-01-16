@@ -15,7 +15,7 @@ MonoBehaviour:
   MinEnemySpwanRange: 15
   MaxEnemySpwanRange: 20
   EnemySpwanLimitation: {x: 95, y: 95}
-  PeacePhaseTime: 1
+  PeacePhaseTime: 35
   EnemyHealthPerDifficultyMultiplier: 1.5
   EnemySpawnCooldown: 5
   WaveDatas:

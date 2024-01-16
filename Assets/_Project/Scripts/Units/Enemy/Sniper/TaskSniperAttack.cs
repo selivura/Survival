@@ -76,7 +76,12 @@ namespace Selivura
             else
             {
                 ApplyMarkOnTarget(target);
-
+                float range = Vector2.Distance(_transform.position, target.transform.position);
+                if(range > _processor.MaxLockRange)
+                {
+                    CancelPreparation();
+                    return state;
+                }
                 if (_attackPrepareTimer.Expired)
                 {
                     Shoot(target);

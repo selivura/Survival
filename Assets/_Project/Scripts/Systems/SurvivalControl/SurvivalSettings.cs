@@ -10,6 +10,7 @@ namespace Selivura
         [Header("Spawn limits")]
         public float MinEnemySpwanRange = 15;
         public float MaxEnemySpwanRange = 25;
+        public float MinSpawnRangeFromBase = 20;
         public Vector2 EnemySpwanLimitation = new Vector2(50, 50);
 
         [Header("Peaceful phase settings")]

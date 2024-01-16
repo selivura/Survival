@@ -113,7 +113,8 @@ namespace Selivura
             _playerUnit.transform.position,
             Settings.EnemySpwanLimitation,
             Settings.MinEnemySpwanRange,
-            Settings.MaxEnemySpwanRange);
+            Settings.MaxEnemySpwanRange,
+            Settings.MinSpawnRangeFromBase);
             var spawned = Spawn(_currentWaveData.WaveEnemies[_currentSpawnIndex].EnemyPrefab, spawnPosition);
 
             spawned.transform.position = spawnPosition;
@@ -122,14 +123,15 @@ namespace Selivura
             _spawnedUnits.Add(spawned);
         }
 
-        private Vector2 GetValidSpawnPosition(Vector2 position, Vector2 limit, float minRange, float maxRange)
+        private Vector2 GetValidSpawnPosition(Vector2 position, Vector2 limit, float minRange, float maxRange, float baseRange)
         {
             var spawnPosition = Utilities.RandomPositionInRangeLimited(position, minRange, maxRange);
             while (
-                spawnPosition.x > limit.x / 2
-                || spawnPosition.y > limit.y / 2
-                || spawnPosition.y < -limit.y / 2
-                || spawnPosition.x < -limit.x / 2)
+                Mathf.Abs(spawnPosition.x) > limit.x / 2
+                || Mathf.Abs(spawnPosition.y) > limit.y / 2
+                || 
+                Vector2.Distance(transform.position, spawnPosition) > baseRange
+               )
             {
                 spawnPosition = Utilities.RandomPositionInRangeLimited(position, minRange, maxRange);
             }

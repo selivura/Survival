@@ -9,6 +9,7 @@ namespace Selivura
         public int AttackDamage = 25;
         public float AttackCooldown = 1;
         public float AttackPrepare = 1;
+        public float MaxLockRange = 8;
         public GameObject TargetMarkPrefab;
         public LineRenderer TargetLinePrefab;
         public AudioClip[] ShootSounds;

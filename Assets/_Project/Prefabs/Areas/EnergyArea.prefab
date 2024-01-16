@@ -191,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreaPS
       objectReference: {fileID: 0}
+    - target: {fileID: 8511062274997885511, guid: 9cb4cd40e45569040a9d5331bff10326, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 7176732837754888085, guid: 907ffd102a3b2e449950d2b99c1f010c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -23,6 +23,7 @@ namespace Selivura.UI
             }
             _interactIndicator.SetActive(true);
             _lockedinteractIndicator.SetActive(false);
+            Canvas.ForceUpdateCanvases();
         }
         public void ShowLockedIndicator()
         {
