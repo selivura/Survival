@@ -30,6 +30,8 @@ namespace Selivura
         private float _startTime;
         public float TotalSurvivalTime => Time.time - _startTime;
         public int CurrentWaveIndex { get; private set; }
+
+        public int TotalWaves => CurrentWaveIndex + Loop * Settings.WaveDatas.Length;
         public int Loop { get; private set; } = 0;
 
         public UnityEvent OnWaveStarted;
@@ -60,7 +62,7 @@ namespace Selivura
             if (CurrentPhaseType == PhaseType.Defence)
             {
                 if (_canSpawnEnemy)
-                    SpawnEnemy();
+                    SpawnEnemyEntry();
                 if (_spawnedUnits.Count <= 0 && _enemyLimitReached)
                 {
                     StartPeacePhase();
@@ -82,7 +84,7 @@ namespace Selivura
                 _currentWaveData = Settings.WaveDatas[CurrentWaveIndex];
                 CurrentWaveIndex++;
             }
-            SpawnEnemy();
+            SpawnEnemyEntry();
             OnPhaseChange?.Invoke(CurrentPhaseType);
             OnWaveStarted?.Invoke();
             
@@ -93,28 +95,33 @@ namespace Selivura
             CurrentPhaseType = PhaseType.Peace;
             OnPhaseChange?.Invoke(CurrentPhaseType);
         }
-        private void SpawnEnemy()
+        private void SpawnEnemyEntry()
         {
             if (!_canSpawnEnemy)
                 return;
+            for (int i = 0; i < _currentWaveData.WaveEnemies[_currentSpawnIndex].Amount; i++)
+            {
+                SpawnEnemy();
+            }
+            _enemySpawnTimer = new Timer(Settings.EnemySpawnCooldown, Time.time);
+            _currentSpawnIndex++;
+        }
 
+        private void SpawnEnemy()
+        {
             Vector2 spawnPosition = GetValidSpawnPosition(
-                _playerUnit.transform.position,
-                Settings.EnemySpwanLimitation,
-                Settings.MinEnemySpwanRange,
-                Settings.MaxEnemySpwanRange);
-
-            var spawned = Spawn(_currentWaveData.WaveEnemies[_currentSpawnIndex], spawnPosition);
+            _playerUnit.transform.position,
+            Settings.EnemySpwanLimitation,
+            Settings.MinEnemySpwanRange,
+            Settings.MaxEnemySpwanRange);
+            var spawned = Spawn(_currentWaveData.WaveEnemies[_currentSpawnIndex].EnemyPrefab, spawnPosition);
 
             spawned.transform.position = spawnPosition;
             spawned.OnKilled.AddListener(RemoveEnemyFromList);
             spawned.Initialize(Mathf.RoundToInt(spawned.BaseHealth * (Loop * Settings.EnemyHealthPerDifficultyMultiplier)));
-
             _spawnedUnits.Add(spawned);
-
-            _enemySpawnTimer = new Timer(Settings.EnemySpawnCooldown, Time.time);
-            _currentSpawnIndex++;
         }
+
         private Vector2 GetValidSpawnPosition(Vector2 position, Vector2 limit, float minRange, float maxRange)
         {
             var spawnPosition = Utilities.RandomPositionInRangeLimited(position, minRange, maxRange);

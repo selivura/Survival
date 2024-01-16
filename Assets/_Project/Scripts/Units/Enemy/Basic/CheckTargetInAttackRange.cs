@@ -37,11 +37,6 @@ namespace Selivura
                 state = NodeState.Succes;
                 return state;
             }
-            else
-            {
-                _dataNode.ClearData(FollowerEnemyBT.DataTargetKey);
-            }
-
             state = NodeState.Failure;
             return state;
         }

@@ -24,6 +24,14 @@ namespace Selivura.UI
             DoShowAnimation();
             _itemImage.sprite = item.Icon;
         }
+        public void Initialize(string name, string desc, int price, Sprite picture)
+        {
+            _itemNameText.text = name;
+            _itemDescriptionText.text = desc;
+            _itemPriceText.text = price.ToString();
+            DoShowAnimation();
+            _itemImage.sprite = picture;
+        }
         public void DoShakeAnimation()
         {
             Container.transform.DOShakePosition(_windowShakeDuration);

@@ -15,5 +15,10 @@ namespace Selivura
         {
             return true;
         }
+
+        public string GetInteractionName()
+        {
+            return "Teleport";
+        }
     }
 }

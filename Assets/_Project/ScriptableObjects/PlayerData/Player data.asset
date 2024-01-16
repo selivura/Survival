@@ -19,7 +19,7 @@ MonoBehaviour:
   EnergyDecay: 4
   MovementSpeed: 7
   AttackDamage: 10
-  AttackCooldown: 0.4
+  AttackCooldown: 0.2
   ProjectileSpeed: 18
   AttackRange: 8
   Penetration: 0

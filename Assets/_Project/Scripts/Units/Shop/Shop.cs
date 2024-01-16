@@ -34,5 +34,9 @@ namespace Selivura
         {
             return CanBuy(interactor.MatterHarvested);
         }
+        public string GetInteractionName()
+        {
+            return "Buy";
+        }
     }
 }

@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0aa28fb2ebb60941834dfeea8636ff9, type: 3}
   m_Name: MainBase data
   m_EditorClassIdentifier: 
-  BaseHealth: 100
+  BaseHealth: 9999
   HealthPerLevel: 25
   EnergyRegenRadiusPerLevel: 0.5
   BaseEnergyRegenRadius: 2.5
   XPProgression: 5
   RegenerationPercent: 0.1
-  RequiredMatterToHeal: 5
-  PlayerHealing: 30

@@ -6,6 +6,7 @@ namespace Selivura.Player
 {
     [RequireComponent(typeof(PlayerUnit))]
     [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(PlayerInteractChecker))]
     public class PlayerController : MonoBehaviour
     {
         public const float NoEnergySpeedPenaltyMultiplier = .5f;
@@ -18,12 +19,8 @@ namespace Selivura.Player
         public Vector2 DirectionInput => Utilities.GetMouseDirection(_cam, transform.position);
 
         private PlayerUnit _playerUnit;
-        [SerializeField] private float _interactDistance;
-        [SerializeField] private GameObject _interactIndicator;
-        [SerializeField] private GameObject _lockedinteractIndicator;
-        [SerializeField] private LayerMask _interactableLayers;
         Camera _cam;
-        private List<IInteractable> _availableInteractables = new List<IInteractable>();
+        private PlayerInteractChecker _interactChecker;
 
         private PlayerControlActions _inputActions;
         private string _moveActionName => _inputActions.Player.Move.name;
@@ -45,6 +42,7 @@ namespace Selivura.Player
             _movement = GetComponent<IMovement>();
             _combat = GetComponent<Combat>();
             _playerUnit = GetComponent<PlayerUnit>();
+            _interactChecker = GetComponent<PlayerInteractChecker>();
         }
         private void FixedUpdate()
         {
@@ -60,7 +58,6 @@ namespace Selivura.Player
                 }
 
             }
-            InteractCheck();
         }
         private void Update()
         {
@@ -86,56 +83,9 @@ namespace Selivura.Player
                 }
             if (InteractInput)
             {
-                foreach (var interactable in _availableInteractables)
-                {
-                    interactable.Interact(_playerUnit);
-                }
+                _interactChecker.Interact();
             }
         }
-        private void InteractCheck()
-        {
-            _availableInteractables.Clear();
-            var interactables = FindInteractables(DoScanForInteractables().ToArray());
-
-            _interactIndicator.SetActive(false);
-            _lockedinteractIndicator.SetActive(false);
-
-            bool atLeastOneAvailable = false;
-            foreach (var interactable in interactables)
-            {
-                _availableInteractables.Add(interactable);
-                if (interactable.CanInteract(_playerUnit))
-                {
-                    atLeastOneAvailable = true;
-                }
-                else
-                {
-                    _lockedinteractIndicator.SetActive(true);
-                }
-            }
-            if (atLeastOneAvailable)
-            {
-                _interactIndicator.SetActive(true);
-                _lockedinteractIndicator.SetActive(false);
-            }
-        }
-        private List<GameObject> DoScanForInteractables()
-        {
-            var gos = new List<GameObject>();
-            foreach (var item in Physics2D.OverlapCircleAll(transform.position, _interactDistance, _interactableLayers))
-            {
-                gos.Add(item.gameObject);
-            }
-            return gos;
-        }
-        private List<IInteractable> FindInteractables(GameObject[] objects)
-        {
-            List<IInteractable> interactables = new List<IInteractable>();
-            foreach (var item in objects)
-            {
-                interactables.AddRange(item.GetComponents<IInteractable>());
-            }
-            return interactables;
-        }
+        
     }
 }

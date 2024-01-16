@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 1293634797302050231, guid: 772d5f175002aeb47b7cd9ec0a6daa6f, type: 3}
     - target: {fileID: 7928306523494786614, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: _baseHealth
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7928306523494786614, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: InitializeOnEnable

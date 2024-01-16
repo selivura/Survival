@@ -15,17 +15,13 @@ MonoBehaviour:
   MinEnemySpwanRange: 15
   MaxEnemySpwanRange: 20
   EnemySpwanLimitation: {x: 95, y: 95}
-  PeacePhaseTime: 30
+  PeacePhaseTime: 1
   EnemyHealthPerDifficultyMultiplier: 1.5
-  EnemySpawnCooldown: 0.5
+  EnemySpawnCooldown: 5
   WaveDatas:
   - {fileID: 11400000, guid: bb84afca3ce9ee54f9a4a780e42394a6, type: 2}
-  - {fileID: 11400000, guid: ef2ff787962630d48872f8b1f08abfc9, type: 2}
-  - {fileID: 11400000, guid: 306562764a194094eb86725ec8e5572a, type: 2}
-  - {fileID: 11400000, guid: 1791841f5d71cd24bb8aa2a5331726f5, type: 2}
-  - {fileID: 11400000, guid: d5802872aa7d88740959dd7aa37dc47e, type: 2}
-  - {fileID: 11400000, guid: b2356608c389eee488929a8281feb045, type: 2}
-  - {fileID: 11400000, guid: 410d1215226f92048b3f9fe30408f649, type: 2}
-  - {fileID: 11400000, guid: 871628295fc3b42489266c475c732092, type: 2}
-  - {fileID: 11400000, guid: 8eb9c397c5430cb438bda2e99054b268, type: 2}
-  - {fileID: 11400000, guid: b519add2f6de8c04caa6ac8ed76e8187, type: 2}
+  - {fileID: 11400000, guid: 17913f73a30bf4a4981eafb7f9e88da7, type: 2}
+  - {fileID: 11400000, guid: bfa4bed99b1a0cc46836f634b31a72a8, type: 2}
+  - {fileID: 11400000, guid: 18c8307937226fa4080587fc68e4d699, type: 2}
+  - {fileID: 11400000, guid: ca0073447d03b544996e3e7cdb9e038d, type: 2}
+  - {fileID: 11400000, guid: df6501de26d66d943996693023f63df3, type: 2}

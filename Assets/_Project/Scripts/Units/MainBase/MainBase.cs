@@ -74,5 +74,10 @@ namespace Selivura
         {
             return interactor.MatterHarvested >= XPToLevelUp;
         }
+
+        public string GetInteractionName()
+        {
+            return "Upgrade base for " + XPToLevelUp + "M";
+        }
     }
 }

@@ -55,5 +55,9 @@ namespace Selivura.UI
                         _current.DoShakeAnimation();
                 }
         }
+        public string GetInteractionName()
+        {
+            return "";
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Selivura
@@ -5,6 +6,13 @@ namespace Selivura
     [CreateAssetMenu(menuName = "Enemy wave")]
     public class WaveData : ScriptableObject
     {
-        public BaseEnemyUnit[] WaveEnemies;
+        public EnemyEntry[] WaveEnemies;
+    }
+
+    [Serializable]
+    public class EnemyEntry
+    {
+        public BaseEnemyUnit EnemyPrefab;
+        public int Amount = 1;
     }
 }

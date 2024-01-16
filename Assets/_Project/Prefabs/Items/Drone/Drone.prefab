@@ -51,7 +51,7 @@ MonoBehaviour:
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  Summoner: {fileID: 0}
+  _summoner: {fileID: 0}
   _summonerFollowStopDistance: 3
   _targetSearchCooldown: 0.2
   _attackData: {fileID: 11400000, guid: 8fd8571e51e2105449d17a3d32698498, type: 2}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e825ceb902e3b4a8b5ee297ad6c595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stoppedSpeed: 0.25
+  _stoppedSpeed: 99
 --- !u!1001 &8960473499421889978
 PrefabInstance:
   m_ObjectHideFlags: 0

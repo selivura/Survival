@@ -13,5 +13,7 @@ namespace Selivura
     {
         public void Interact(PlayerUnit interactor);
         public bool CanInteract(PlayerUnit interactor);
+
+        public string GetInteractionName();
     }
 }

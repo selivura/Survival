@@ -36,7 +36,7 @@ namespace Selivura
         }
         private void UpdateRecord()
         {
-            CurrentWaves = _waveController.CurrentWaveIndex;
+            CurrentWaves = _waveController.TotalWaves;
             CurrentLoops = _waveController.Loop;
             OnRecordUpdated?.Invoke();
         }
@@ -52,14 +52,10 @@ namespace Selivura
             if (CurrentLoops > RecordLoops)
             {
                 RecordLoops = CurrentLoops;
-                RecordWaves = CurrentWaves;
             }
-            else if (RecordLoops == CurrentLoops)
+            if (CurrentWaves > RecordWaves)
             {
-                if(CurrentWaves > RecordWaves)
-                {
-                    RecordWaves = CurrentWaves;
-                }
+                RecordWaves = CurrentWaves;
             }
             PlayerPrefs.SetInt(_waveRecodKey, RecordWaves);
             PlayerPrefs.SetInt(_loopRecodKey, RecordLoops);
