@@ -5,6 +5,7 @@ namespace Selivura.UI
     public class SurvivalRecordDisplayUI : TextDisplayUI
     {
         [SerializeField] RecordSaver _recordSaver;
+        [SerializeField] bool _displayCurrentTry = true;
         private void OnValidate()
         {
             if (!_recordSaver)
@@ -14,10 +15,17 @@ namespace Selivura.UI
         }
         public void UpdateText()
         {
-            tmpText.text =
+            if (_displayCurrentTry)
+                tmpText.text =
+                    prefix
+                    + "\nWaves: " + _recordSaver.CurrentWaves
+                    + "\nLoops: " + _recordSaver.CurrentLoops
+                    + "\nRecord:"
+                    + "\nWaves: " + _recordSaver.RecordWaves
+                    + "\nLoops: " + _recordSaver.RecordLoops;
+            else
+                tmpText.text =
                 prefix
-                + "\nWaves: " + _recordSaver.CurrentWaves
-                + "\nLoops: " + _recordSaver.CurrentLoops
                 + "\nRecord:"
                 + "\nWaves: " + _recordSaver.RecordWaves
                 + "\nLoops: " + _recordSaver.RecordLoops;

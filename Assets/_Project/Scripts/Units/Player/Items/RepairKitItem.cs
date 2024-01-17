@@ -1,17 +1,18 @@
 using Selivura.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
 {
-    public class RepairKitItem : BaseUpgradeItem
+    public class RepairKitItem : OneUseItem
     {
         [SerializeField] protected int _healAmount = 50;
+        [Inject]
+        MainBase _base;
         public override void OnPickup(PlayerUnit player)
         {
             base.OnPickup(player);
-            mainBase.Heal(_healAmount);
+            FindFirstObjectByType<Injector>().Inject(this);
+            _base.Heal(_healAmount);
         }
 
     }

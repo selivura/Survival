@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +31,7 @@ namespace Selivura.Player
         PauseController _pauseController;
         private void Awake()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
         }
         private void OnEnable()
         {
@@ -86,6 +85,6 @@ namespace Selivura.Player
                 _interactChecker.Interact();
             }
         }
-        
+
     }
 }

@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce1dd7694177c34a963718b46273c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 6952497985732893508, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
+  Icon: {fileID: -1355149353602508767, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
   DisplayName: Drone support
   Description: Summons drone to help you
   Price: 20

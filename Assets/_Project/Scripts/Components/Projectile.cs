@@ -1,4 +1,3 @@
-using Selivura.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +9,7 @@ namespace Selivura
         [SerializeField] ProjectileData _data;
         private float _initializationTime;
         private bool _initialized;
-        public UnityEvent OnHit;
+        public UnityEvent<HitInfo> OnHit;
         public int Health = 2;
         IMovement _movement;
         private void Awake()
@@ -45,7 +44,11 @@ namespace Selivura
             unit.ChangeHealth(-_data.Damage);
             if (Health < 1)
                 Deinitialize();
-            OnHit?.Invoke();
+            var hitInfo = new HitInfo();
+            hitInfo.position = transform.position;
+            hitInfo.unit = unit;
+            hitInfo.projectile = this;
+            OnHit?.Invoke(hitInfo);
         }
 
         private void Deinitialize()
@@ -91,7 +94,7 @@ namespace Selivura
                 _lifeime = lifetime;
                 return this;
             }
-            public Builder WithHealth(int health) 
+            public Builder WithHealth(int health)
             {
                 _health = health;
                 return this;

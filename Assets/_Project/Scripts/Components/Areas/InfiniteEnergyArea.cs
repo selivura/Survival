@@ -1,6 +1,4 @@
 using Selivura.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
@@ -18,13 +16,13 @@ namespace Selivura
         {
             if (_player != null)
                 if (collision.gameObject == _player.gameObject)
-            {
-                playerInRange = true;
-            }
+                {
+                    playerInRange = true;
+                }
         }
         protected override void FixedUpdate()
         {
-            if(playerInRange)
+            if (playerInRange)
             {
                 _player.InfiniteEnergy = true;
             }
@@ -35,11 +33,11 @@ namespace Selivura
         }
         protected override void OnTriggerExit2D(Collider2D collision)
         {
-            if(_player != null)
-            if (collision.gameObject == _player.gameObject)
-            {
-                playerInRange = false;
-            }
+            if (_player != null)
+                if (collision.gameObject == _player.gameObject)
+                {
+                    playerInRange = false;
+                }
         }
     }
 }

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84965511acee00840a564dbeb0ef1dbb, type: 3}
   m_Name: DroneAttackTaskData
   m_EditorClassIdentifier: 
-  AttackDamage: 5
-  AttackCooldown: 0.5
+  AttackDamage: 4
+  AttackCooldown: 0.2
   AttackClip: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
   AttackSoundParameters:
     Channel: 0
-    Volume: 0.4
+    Volume: 0.2
     MinPitch: 0.95
     MaxPitch: 1.05
   AttackRange: 0.75

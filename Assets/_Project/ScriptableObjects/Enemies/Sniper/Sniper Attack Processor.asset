@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Sniper Attack Processor
   m_EditorClassIdentifier: 
   PrepareParameterName: AttackPrepare
-  AttackDamage: 10
+  AttackDamage: 33
   AttackCooldown: 5
   AttackPrepare: 3
+  MaxLockRange: 8
   TargetMarkPrefab: {fileID: 8564871826436935208, guid: 928be4f3ff27bb2409fef92cbfe977e0, type: 3}
   TargetLinePrefab: {fileID: 372361939637079170, guid: d0970d2c39e8be5428b93851161ec800, type: 3}
   ShootSounds:

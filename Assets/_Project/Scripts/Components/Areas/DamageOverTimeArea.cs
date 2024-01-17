@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ namespace Selivura
                     _insideUnits[i].TakeDamage(DamagePerSecond);
                     _damageTimer = new Timer(1, Time.time);
                 }
-                foreach (Unit unit in inactive) 
+                foreach (Unit unit in inactive)
                 {
                     _insideUnits.Remove(unit);
                 }

@@ -1,6 +1,4 @@
 using Selivura.BehaviorTrees;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
@@ -12,7 +10,7 @@ namespace Selivura
         private float _stopDistance = 2;
         private Transform _transform;
         private float _speed = 5;
-        public TaskFollowSummoner(Unit summoner, IMovement movement, float stopDistance, float speed,Transform transform) 
+        public TaskFollowSummoner(Unit summoner, IMovement movement, float stopDistance, float speed, Transform transform)
         {
             _summoner = summoner;
             _movement = movement;
@@ -35,7 +33,7 @@ namespace Selivura
                 return state;
             }
             _movement.Move(_transform.position.NormalizedDirectionTo(_summoner.transform.position), _speed);
-            
+
             state = NodeState.Running;
             return state;
 

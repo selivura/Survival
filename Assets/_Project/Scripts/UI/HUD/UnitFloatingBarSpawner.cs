@@ -13,7 +13,7 @@ namespace Selivura.UI
         private void Awake()
         {
             _cam = Camera.main;
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
         }
         private void OnEnable()
         {
@@ -36,7 +36,7 @@ namespace Selivura.UI
         }
         private void Update()
         {
-            if(_current)
+            if (_current)
                 _current.transform.position = _cam.WorldToViewportPoint(transform.position);
         }
         private void DespawnCurrent(Unit unit)

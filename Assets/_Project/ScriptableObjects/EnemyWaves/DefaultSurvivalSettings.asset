@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinEnemySpwanRange: 15
   MaxEnemySpwanRange: 20
+  MinSpawnRangeFromBase: 20
   EnemySpwanLimitation: {x: 95, y: 95}
-  PeacePhaseTime: 35
+  PeacePhaseTime: 45
   EnemyHealthPerDifficultyMultiplier: 1.5
   EnemySpawnCooldown: 5
   WaveDatas:

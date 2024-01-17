@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
-using Selivura.Player;
 using UnityEngine.Events;
 
 namespace Selivura.UI
@@ -20,14 +16,14 @@ namespace Selivura.UI
         GameStateController _gameStateController;
         private void Awake()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
             OpenMenu(false);
         }
         public void OpenMenu(bool value)
         {
             _menuContainer.SetActive(value);
             _pauseController.PauseGame(value);
-            if(value)
+            if (value)
             {
                 OnMenuOpened.Invoke();
             }
@@ -41,7 +37,7 @@ namespace Selivura.UI
             OpenMenu(false);
             _gameStateController.GoToMainMenu();
         }
-        
+
         public void RestartGameButton()
         {
             GameStateController.RestartGame(); //TODO Добавить подтверждение сюда

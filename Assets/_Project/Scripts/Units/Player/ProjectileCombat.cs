@@ -31,7 +31,14 @@ namespace Selivura.Player
             var spawned = _pool.Get(ProjectilePrefab);
             spawned.Initialize(projectileData, direction);
             spawned.transform.position = transform.position;
+            spawned.OnHit.AddListener(OnProjectileHit);
+
             OnAttack?.Invoke();
+        }
+        public void OnProjectileHit(HitInfo info)
+        {
+            OnHit?.Invoke(info);
+            info.projectile.OnHit.RemoveListener(OnProjectileHit);
         }
     }
 }

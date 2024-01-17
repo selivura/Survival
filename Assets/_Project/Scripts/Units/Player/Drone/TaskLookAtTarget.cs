@@ -1,7 +1,4 @@
 using Selivura.BehaviorTrees;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace Selivura
@@ -11,7 +8,7 @@ namespace Selivura
         private Transform _transform;
         private Node _dataNode;
 
-        public TaskLookAtTarget(Transform transform,Node dataNode)
+        public TaskLookAtTarget(Transform transform, Node dataNode)
         {
             _transform = transform;
             _dataNode = dataNode;
@@ -19,7 +16,7 @@ namespace Selivura
         public override NodeState Evaluate()
         {
             var target = (Unit)_dataNode.GetData(FollowerEnemyBT.DataTargetKey);
-            if(target == null)
+            if (target == null)
             {
                 state = NodeState.Failure;
                 return state;

@@ -10,7 +10,7 @@ namespace Selivura
         {
             _audioSource = GetComponent<AudioSource>();
         }
-        public void SetVolume( float volume )
+        public void SetVolume(float volume)
         {
             _audioSource.volume = volume;
         }

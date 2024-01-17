@@ -19,7 +19,7 @@ namespace Selivura.Player
         public PlayerStats PlayerStats { get; private set; }
         public BasePlayerStats BasePlayerStats;
         public List<Item> Inventory { get; private set; } = new List<Item>();
-
+        private Timer _iFramesTimer = new Timer(0, 0);
         public int MatterHarvested { get; private set; } = 0;
         public UnityEvent<float> OnMatterChanged;
         public UnityEvent<float> OnMatterIncreased;
@@ -61,6 +61,21 @@ namespace Selivura.Player
             var spawned = Instantiate(itemPrefab, transform);
             spawned.OnPickup(this);
             Inventory.Add(spawned);
+        }
+        public override bool ChangeHealth(int value)
+        {
+            if (value < 0)
+            {
+                if (!_iFramesTimer.Expired)
+                {
+                    return false;
+                }
+                else
+                {
+                    _iFramesTimer = new Timer(0.75f, Time.time);
+                }
+            }
+            return base.ChangeHealth(value);
         }
         public void GiveAllMatterToBase(MainBase mainBase)
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Selivura
 {
-    [CreateAssetMenu(menuName ="Player/Stats")]
+    [CreateAssetMenu(menuName = "Player/Stats")]
     public class BasePlayerStats : ScriptableObject
     {
         public float EnergyDecayCooldown = .1f;

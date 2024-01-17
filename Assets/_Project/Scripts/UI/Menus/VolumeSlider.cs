@@ -14,11 +14,11 @@ namespace Selivura.UI
         private AudioPlayer _audioPlayer;
         private void Awake()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
         }
         private void Start()
         {
-            slider =  GetComponent<Slider>();
+            slider = GetComponent<Slider>();
             if (_global)
             {
                 slider.value = AudioListener.volume;

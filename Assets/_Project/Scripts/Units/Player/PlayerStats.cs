@@ -57,7 +57,7 @@ namespace Selivura.Player
             public Builder WithAttackDamage(int attackDamage)
             {
                 this.attackDamage = attackDamage;
-                    return this;
+                return this;
             }
             public Builder WithAttackCD(float cd)
             {

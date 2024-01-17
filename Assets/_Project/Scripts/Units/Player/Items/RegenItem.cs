@@ -14,7 +14,7 @@ namespace Selivura
         }
         private void FixedUpdate()
         {
-            if(_regenTimer.Expired)
+            if (_regenTimer.Expired)
             {
                 _regenTimer = new Timer(1, Time.time);
                 playerUnit.Heal(_regenPerSecond);

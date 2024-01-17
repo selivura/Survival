@@ -1,6 +1,5 @@
 ﻿using Selivura.Player;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Selivura.Tests
 {
@@ -21,7 +20,7 @@ namespace Selivura.Tests
             go.layer = 11;
             go.AddComponent<Rigidbody2D>().gravityScale = 0;
             go.AddComponent<CircleCollider2D>();
-            var playerUnit =  go.AddComponent<PlayerUnit>();
+            var playerUnit = go.AddComponent<PlayerUnit>();
             playerUnit.BasePlayerStats = new BasePlayerStats();
             playerUnit.Initialize();
             return playerUnit;

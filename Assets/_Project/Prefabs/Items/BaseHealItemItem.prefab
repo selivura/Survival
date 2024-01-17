@@ -90,8 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695db2cac969971468c8b4f89439d546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: -3902929495046891595, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
+  Icon: {fileID: -6090801427705583883, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
   DisplayName: Repair kit
-  Description: 'Heals your base by 50. '
+  Description: Heals your base
   Price: 25
-  _healAmount: 100
+  _brokenSprite: {fileID: 4524980457387890294, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
+  _brokenName: Used repair kit
+  _healAmount: 50

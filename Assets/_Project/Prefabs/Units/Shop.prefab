@@ -295,6 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f593b1ace1f5ca49bee570b5735a248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibles:
+  - {fileID: -8894147907681812585, guid: 391b1acc5ad06a444a5eadc9e33b2b6f, type: 3}
   _spawnRange: 2
   Amount: 5
 --- !u!114 &844302051936264737

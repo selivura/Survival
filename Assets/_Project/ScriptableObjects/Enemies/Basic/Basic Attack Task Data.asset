@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84965511acee00840a564dbeb0ef1dbb, type: 3}
   m_Name: Basic Attack Task Data
   m_EditorClassIdentifier: 
-  AttackDamage: 3
+  AttackDamage: 5
   AttackCooldown: 1
   AttackClip: {fileID: 8300000, guid: d9419ba0bfac1e84a95418ac5851caf6, type: 3}
   AttackSoundParameters:
@@ -20,3 +20,4 @@ MonoBehaviour:
     Volume: 0.25
     MinPitch: 0.95
     MaxPitch: 1.05
+  AttackRange: 2

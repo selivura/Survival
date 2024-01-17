@@ -17,7 +17,7 @@ namespace Selivura
         {
             get
             {
-                if(!circleCollider)
+                if (!circleCollider)
                     circleCollider = GetComponent<CircleCollider2D>();
                 return circleCollider.radius;
             }

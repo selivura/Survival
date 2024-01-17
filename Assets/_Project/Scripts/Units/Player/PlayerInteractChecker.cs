@@ -44,7 +44,7 @@ namespace Selivura
                 _availableInteractables.Add(interactable);
                 if (interactable.CanInteract(_playerUnit))
                 {
-                    if(interactable.GetInteractionName() != "")
+                    if (interactable.GetInteractionName() != "")
                         avialableInteractible = interactable.GetInteractionName();
                     atLeastOneAvailable = true;
                 }
@@ -58,7 +58,7 @@ namespace Selivura
                 OnInteractibleNearby?.Invoke(avialableInteractible);
                 return;
             }
-            if(lockedNearby)
+            if (lockedNearby)
             {
                 OnLockedNearby?.Invoke();
                 return;

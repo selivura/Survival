@@ -1,6 +1,4 @@
 using Selivura.BehaviorTrees;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
@@ -29,10 +27,11 @@ namespace Selivura
             _attackCDTimer = new Timer(0, 0);
             _animator = animator;
             _unit = me;
+            _transform = _unit.transform;
             _processor = processor;
             _unit.OnKilled.AddListener(OnKilled);
             RemoveTargetMark();
-            if(!_injector)
+            if (!_injector)
             {
                 _injector = GameObject.FindFirstObjectByType<Injector>();
             }
@@ -51,7 +50,7 @@ namespace Selivura
             }
             if (_spawnedTargetLine != null)
             {
-                Object.Destroy(_spawnedTargetLine.gameObject );
+                Object.Destroy(_spawnedTargetLine.gameObject);
             }
         }
 
@@ -69,6 +68,12 @@ namespace Selivura
                 state = NodeState.Running;
                 return state;
             }
+            float range = Vector2.Distance(_transform.position, target.transform.position);
+            if (range > _processor.MaxLockRange)
+            {
+                CancelPreparation();
+                return state;
+            }
             if (!_isPreparing)
             {
                 StartPreparing();
@@ -76,12 +81,6 @@ namespace Selivura
             else
             {
                 ApplyMarkOnTarget(target);
-                float range = Vector2.Distance(_transform.position, target.transform.position);
-                if(range > _processor.MaxLockRange)
-                {
-                    CancelPreparation();
-                    return state;
-                }
                 if (_attackPrepareTimer.Expired)
                 {
                     Shoot(target);
@@ -166,7 +165,7 @@ namespace Selivura
             }
             public Builder WithProcessor(SniperAttackProcessor processor)
             {
-                _processor = processor; 
+                _processor = processor;
                 return this;
             }
             public TaskSniperAttack Build()

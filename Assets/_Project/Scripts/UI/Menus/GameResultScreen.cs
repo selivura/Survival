@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace Selivura.UI
@@ -18,13 +15,13 @@ namespace Selivura.UI
         GameStateController _gameStateController;
         private void Awake()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
             Show(false);
         }
         public void Show(bool show)
         {
             Container.SetActive(show);
-            if(_pauseMenu != null)
+            if (_pauseMenu != null)
             {
                 _pauseMenu.CanBeOpened = !show;
             }

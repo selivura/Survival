@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f3b6a3a38692f44b50dc7193d3e942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 1023794233066372947, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
+  Icon: {fileID: 5565159538516247020, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
   DisplayName: Damage field
   Description: Deals damage to enemies near base
   Price: 15

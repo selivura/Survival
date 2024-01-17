@@ -1,7 +1,5 @@
 using Selivura.BehaviorTrees;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Selivura
 {

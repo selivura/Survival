@@ -1,6 +1,4 @@
 using Selivura.Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -28,7 +26,7 @@ namespace Selivura.PostProcessing
         private void UpdateVolume()
         {
             var value = _player.EnergyLeft / _player.MaxEnergy;
-            if(value > _playerEnergyThreshold)
+            if (value > _playerEnergyThreshold)
                 _volume.weight = _defaultVolumeWeight;
             else
             {

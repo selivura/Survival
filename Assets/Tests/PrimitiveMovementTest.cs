@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using Selivura.Player;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.TestTools;
 namespace Selivura.Tests

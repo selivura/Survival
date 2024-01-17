@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac82b44359bafe74f9d76e7576eb3f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: -4522998300103112336, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
+  Icon: {fileID: 536871710924347565, guid: b95082ab57cfe0b4c8042cf3876765e1, type: 3}
   DisplayName: Nanomachine v1
   Description: Heals you over time
   Price: 15

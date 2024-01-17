@@ -1,4 +1,3 @@
-using Selivura.ObjectPooling;
 using UnityEngine;
 
 namespace Selivura
@@ -14,7 +13,7 @@ namespace Selivura
             for (int i = 0; i < _spawnsPerPhase; i++)
             {
                 var spawnPos = Utilities.RandomPositionInRangeLimited(transform.position, SpawnMinRange, SpawnMaxRange);
-                var spawned = matterSpawner.Spawn(spawnPos);
+                var spawned = matterSpawner.Spawn(collectibles.GetRandomElement(), spawnPos);
                 spawned.transform.position = spawnPos;
             }
         }

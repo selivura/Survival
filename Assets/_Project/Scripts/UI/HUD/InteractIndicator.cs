@@ -13,7 +13,7 @@ namespace Selivura.UI
         }
         public void ShowInteractibleIndicator(string name)
         {
-            if(name != "")
+            if (name != "")
             {
                 tmpText.text = prefix + name;
             }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb24459e44c18b74fb07d533617e4b75, type: 3}
-  m_Name: DroneTest
+  m_Name: Test
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: 8950277671112241906, guid: e26dca79ad693cd42bbe31ceadda2c4b, type: 3}
+  - {fileID: -2620531943374754219, guid: 52c711586d8850a44bb50de09ce25cd8, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MainBase data
   m_EditorClassIdentifier: 
   BaseHealth: 100
-  HealthPerLevel: 25
+  HealthPerLevel: 10
   EnergyRegenRadiusPerLevel: 0.5
-  BaseEnergyRegenRadius: 2.5
+  BaseEnergyRegenRadius: 3
   XPProgression: 5
   RegenerationPercent: 0.1

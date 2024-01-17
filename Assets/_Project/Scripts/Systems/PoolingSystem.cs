@@ -95,7 +95,15 @@ namespace Selivura.ObjectPooling
 
         private T CreateObject(bool isActiveByDef = false)
         {
-            var spawned = Object.Instantiate(Prefab, Container);
+            T spawned;
+            if (Container != null)
+            {
+                spawned = Object.Instantiate(Prefab, Container);
+            }
+            else
+            {
+                spawned = Object.Instantiate(Prefab, Vector3.zero, Quaternion.identity);
+            }
             spawned.gameObject.SetActive(isActiveByDef);
             _pool.Add(spawned);
             return spawned;

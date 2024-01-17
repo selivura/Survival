@@ -1,5 +1,5 @@
-using UnityEngine;
 using Selivura.BehaviorTrees;
+using UnityEngine;
 
 namespace Selivura
 {
@@ -7,13 +7,13 @@ namespace Selivura
     {
         private Transform _transform;
 
-        private Timer _searchTimer = new Timer(0,0);
+        private Timer _searchTimer = new Timer(0, 0);
         private float _searchCooldown = 0.5f;
         private float _searchRadius = 1;
         private LayerMask _targetLayerMask;
         private Node _dataNode;
 
-       public TaskSearchTarget(Transform transform, float searchCooldown, float searchRadius, LayerMask targetLayerMask, Node dataNode)
+        public TaskSearchTarget(Transform transform, float searchCooldown, float searchRadius, LayerMask targetLayerMask, Node dataNode)
         {
             _transform = transform;
             _searchCooldown = searchCooldown;
@@ -24,7 +24,7 @@ namespace Selivura
         }
         public override NodeState Evaluate()
         {
-            if(_dataNode.GetData(FollowerEnemyBT.DataTargetKey) !=null)
+            if (_dataNode.GetData(FollowerEnemyBT.DataTargetKey) != null)
             {
                 var newTarget = TryGetTarget();
                 if (newTarget != null)
@@ -35,8 +35,8 @@ namespace Selivura
             else
             {
                 var newTarget = TryGetTarget();
-                if(newTarget == null) 
-                { 
+                if (newTarget == null)
+                {
                     state = NodeState.Failure;
                     return state;
                 }

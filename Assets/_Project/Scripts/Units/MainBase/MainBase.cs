@@ -29,7 +29,7 @@ namespace Selivura
                 Debug.LogWarning($"No base data was assigned for {gameObject.name}, creating new one");
                 BaseData = new MainBaseData();
             }
-            if(!Area)
+            if (!Area)
             {
                 Debug.LogWarning($"No {Area.GetType()} was assigned for {gameObject.name}, creating new one");
                 GameObject areaObject = new GameObject();

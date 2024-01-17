@@ -6,7 +6,7 @@ namespace Selivura
     public class DroneMovement : MonoBehaviour, IMovement
     {
         protected new Rigidbody2D rigidbody;
-       [SerializeField] private float _stoppedSpeed = 0.25f;
+        [SerializeField] private float _stoppedSpeed = 0.25f;
         public Vector2 MovementVelocity { get => rigidbody.velocity; }
         private void Awake()
         {

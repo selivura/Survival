@@ -24,6 +24,7 @@ namespace Selivura.UI
         }
         public void PulseCursor()
         {
+            transform.localScale = Vector3.one;
             transform.DOPunchScale(new Vector3(_shootPunch, _shootPunch, _shootPunch), 0.1f).SetUpdate(true);
         }
     }

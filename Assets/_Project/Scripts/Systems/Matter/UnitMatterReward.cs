@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
@@ -19,7 +17,7 @@ namespace Selivura
         {
             for (int i = 0; i < Amount; i++)
             {
-                matterSpawner.Spawn(Utilities.RandomPositionInRange(transform.position, _spawnRange));
+                matterSpawner.Spawn(collectibles.GetRandomElement(), Utilities.RandomPositionInRange(transform.position, _spawnRange));
             }
         }
         private void OnEnable()

@@ -10,7 +10,7 @@ namespace Selivura
         AttackTaskData _attackData;
         [Inject]
         private AudioPlayer _audioPlayer;
-        public TaskAttack(AttackTaskData attackData,Node dataNode)
+        public TaskAttack(AttackTaskData attackData, Node dataNode)
         {
             GameObject.FindFirstObjectByType<Injector>().Inject(this);
             _attackData = attackData;
@@ -28,15 +28,15 @@ namespace Selivura
             }
             if (!_attackTimer.Expired)
             {
-               state = NodeState.Running;
-               return state;
+                state = NodeState.Running;
+                return state;
             }
 
             _attackTimer = new Timer(_attackData.AttackCooldown, Time.time);
-            if(_audioPlayer)
+            if (_audioPlayer)
                 _attackData.PlayAttackeffects(_audioPlayer);
             target.TakeDamage(_attackData.AttackDamage);
-            if(target.CurrentHealth <= 0)
+            if (target.CurrentHealth <= 0)
             {
                 _dataNode.ClearData(FollowerEnemyBT.DataTargetKey);
             }

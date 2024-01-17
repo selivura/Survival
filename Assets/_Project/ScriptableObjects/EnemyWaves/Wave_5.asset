@@ -18,7 +18,7 @@ MonoBehaviour:
   - EnemyPrefab: {fileID: 5476885656344271499, guid: 59135cc9ef678f94893ca84ad583fb8c, type: 3}
     Amount: 5
   - EnemyPrefab: {fileID: 5476885656344271499, guid: 59135cc9ef678f94893ca84ad583fb8c, type: 3}
-    Amount: 15
+    Amount: 7
   - EnemyPrefab: {fileID: 7928306523494786614, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
     Amount: 5
   - EnemyPrefab: {fileID: 7928306523494786614, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
@@ -27,3 +27,5 @@ MonoBehaviour:
     Amount: 5
   - EnemyPrefab: {fileID: 1346500074640106005, guid: 0dbf696ffba1fce4f92e8dd474f15273, type: 3}
     Amount: 2
+  - EnemyPrefab: {fileID: 555680000487258511, guid: c1a504e75c25d13459211572bc54b84b, type: 3}
+    Amount: 1

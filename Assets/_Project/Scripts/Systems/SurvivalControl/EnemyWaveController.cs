@@ -1,4 +1,3 @@
-using Selivura.ObjectPooling;
 using Selivura.Player;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +17,7 @@ namespace Selivura
 
         public PhaseType CurrentPhaseType;
 
-        private Timer _phaseTimer = new Timer(0,0);
+        private Timer _phaseTimer = new Timer(0, 0);
         public float PhaseTimeLeft => _phaseTimer.TimeLeft;
         private Timer _enemySpawnTimer = new Timer(0, 0);
         private bool _canSpawnEnemy => _enemySpawnTimer.Expired && !_enemyLimitReached;
@@ -87,7 +86,7 @@ namespace Selivura
             SpawnEnemyEntry();
             OnPhaseChange?.Invoke(CurrentPhaseType);
             OnWaveStarted?.Invoke();
-            
+
         }
         private void StartPeacePhase()
         {
@@ -129,7 +128,7 @@ namespace Selivura
             while (
                 Mathf.Abs(spawnPosition.x) > limit.x / 2
                 || Mathf.Abs(spawnPosition.y) > limit.y / 2
-                || 
+                ||
                 Vector2.Distance(transform.position, spawnPosition) > baseRange
                )
             {
@@ -147,8 +146,8 @@ namespace Selivura
 
         private void OnDrawGizmosSelected()
         {
-            if(Settings != null)
-            Gizmos.DrawWireCube(transform.position, Settings.EnemySpwanLimitation);
+            if (Settings != null)
+                Gizmos.DrawWireCube(transform.position, Settings.EnemySpwanLimitation);
         }
     }
 }

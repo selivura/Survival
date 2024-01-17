@@ -8,7 +8,7 @@ namespace Selivura.UI
         PlayerUnit _playerUnit;
         private void OnEnable()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
             _playerUnit.OnMatterChanged.AddListener(OnMatterChanged);
             OnMatterChanged();
         }

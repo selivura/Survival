@@ -10,7 +10,7 @@ namespace Selivura.UI
         AttentionMessage _attentionMessage;
         private void Awake()
         {
-            _shop = GetComponent<Shop>();   
+            _shop = GetComponent<Shop>();
             FindFirstObjectByType<Injector>().Inject(this);
         }
         private void OnEnable()

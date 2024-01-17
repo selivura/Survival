@@ -32,7 +32,7 @@ namespace Selivura
                 return state;
             }
             float targetDistance = Vector2.Distance(target.transform.position, _transform.position);
-          
+
             if (targetDistance <= _stopDistance)
             {
                 _movement.Stop();
@@ -41,7 +41,7 @@ namespace Selivura
             }
 
             _movement.Move(_transform.position.NormalizedDirectionTo(target.transform.position), _moveSpeed);
-                
+
             state = NodeState.Running;
             return state;
         }

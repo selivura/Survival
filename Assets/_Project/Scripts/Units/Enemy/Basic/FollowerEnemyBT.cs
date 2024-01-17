@@ -1,7 +1,6 @@
-using System.Collections;
+using Selivura.BehaviorTrees;
 using System.Collections.Generic;
 using UnityEngine;
-using Selivura.BehaviorTrees;
 
 namespace Selivura
 {
@@ -38,7 +37,7 @@ namespace Selivura
                     new TaskGoToTarget(transform, _moveSpeed, _movement, _attackDistance, _dataNode),
                 }),
             });
-             
+
             return root;
         }
 

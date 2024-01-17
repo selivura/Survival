@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using Selivura.Player;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
 namespace Selivura.Tests
@@ -27,7 +24,7 @@ namespace Selivura.Tests
         {
             yield return ChannelTest(SoundChannel.SFX);
         }
-       
+
         [UnityTest]
         public IEnumerator AudioPlayerBGMVolumeTest()
         {
@@ -46,6 +43,6 @@ namespace Selivura.Tests
             Assert.AreEqual(volumeBeforeTest, audioPlayer.GetChannelVolume(channel));
         }
 
-       
+
     }
 }

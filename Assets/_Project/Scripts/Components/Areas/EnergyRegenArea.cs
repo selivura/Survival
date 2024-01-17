@@ -1,4 +1,3 @@
-using Selivura.Player;
 using UnityEngine;
 
 namespace Selivura
@@ -7,7 +6,7 @@ namespace Selivura
     public class EnergyRegenArea : InfiniteEnergyArea
     {
         [SerializeField] private float _rechargeCooldown = .1f;
-        private Timer _rechargeTimer = new Timer(0,0);
+        private Timer _rechargeTimer = new Timer(0, 0);
         public bool CanCharge => _rechargeTimer.Expired && playerInRange;
         private void ChargePlayerEnergy()
         {

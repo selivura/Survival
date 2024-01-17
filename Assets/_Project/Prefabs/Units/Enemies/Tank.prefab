@@ -18,16 +18,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1239992911025555728, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1239992911025555728, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: m_LocalScale.y
-      value: 20
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2050544435820865514, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 1537965002957857568}
     - target: {fileID: 2050544435820865514, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -79,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 6143885109772928669, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3221390437115404245, guid: 907ffd102a3b2e449950d2b99c1f010c, type: 3}
+      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
     - target: {fileID: 6821215276081750453, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -110,6 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3140595966950230675, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
+    - {fileID: 9000126952493579417, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -135,8 +132,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stoppedSpeed: 0
---- !u!95 &1537965002957857568 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9000126952493579417, guid: 28d42e4865ade4240af9010282f14c53, type: 3}
-  m_PrefabInstance: {fileID: 7615917660328779705}
-  m_PrefabAsset: {fileID: 0}

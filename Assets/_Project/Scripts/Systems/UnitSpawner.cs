@@ -17,7 +17,7 @@ namespace Selivura
             Unit spawned = pool.Get(prefab);
             spawned.transform.position = position;
 
-            if(_unitSpawnEffect != null)
+            if (_unitSpawnEffect != null)
             {
                 Instantiate(_unitSpawnEffect, spawned.transform);
             }

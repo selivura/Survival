@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +7,10 @@ namespace Selivura
     {
         [Inject]
         protected MatterSpawner matterSpawner;
+        [SerializeField] protected List<MatterCollectible> collectibles = new List<MatterCollectible>();
         protected virtual void Awake()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
         }
     }
 }

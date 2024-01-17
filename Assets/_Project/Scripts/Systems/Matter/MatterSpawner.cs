@@ -1,13 +1,10 @@
 using Selivura.ObjectPooling;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Selivura
 {
     public class MatterSpawner : MonoBehaviour, IDependecyProvider
     {
-        [SerializeField] protected MatterCollectible prefab;
         protected PoolingSystem<MatterCollectible> matterPool;
 
         [Provide]
@@ -19,7 +16,7 @@ namespace Selivura
         {
             matterPool = new PoolingSystem<MatterCollectible>(transform);
         }
-        public MatterCollectible Spawn(Vector2 spawnPos)
+        public MatterCollectible Spawn(MatterCollectible prefab, Vector2 spawnPos)
         {
             var spawned = matterPool.Get(prefab);
             spawned.transform.position = spawnPos;

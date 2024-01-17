@@ -47,12 +47,12 @@ namespace Selivura
         }
         public void SetChannelVolume(float volume, SoundChannel channel)
         {
-           Volumes[(int)channel] = volume;
-           SaveAllCurrentParameters();
+            Volumes[(int)channel] = volume;
+            SaveAllCurrentParameters();
         }
         public float GetChannelVolume(SoundChannel channel)
         {
-           return Volumes[(int)channel];
+            return Volumes[(int)channel];
         }
         public void PlaySound(AudioClip clip, SoundParameters parameters)
         {

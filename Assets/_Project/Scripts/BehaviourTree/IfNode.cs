@@ -1,7 +1,4 @@
 using Selivura.BehaviorTrees;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Selivura
 {
@@ -24,7 +21,7 @@ namespace Selivura
                     state = _failure.Evaluate();
                     return state;
                 case NodeState.Succes:
-                    state =  _succes.Evaluate();
+                    state = _succes.Evaluate();
                     return state;
                 case NodeState.Running:
                     break;

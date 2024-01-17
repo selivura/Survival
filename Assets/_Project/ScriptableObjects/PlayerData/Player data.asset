@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Player data
   m_EditorClassIdentifier: 
   EnergyDecayCooldown: 1
-  NoEnergyHealthDamage: 25
-  Energy: 70
-  EnergyRegeneration: 25
+  NoEnergyHealthDamage: 12
+  Energy: 85
+  EnergyRegeneration: 30
   EnergyDecay: 4
   MovementSpeed: 7
   AttackDamage: 10

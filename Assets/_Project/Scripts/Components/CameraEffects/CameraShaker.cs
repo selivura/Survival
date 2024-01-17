@@ -1,5 +1,5 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
 namespace Selivura
 {
@@ -8,7 +8,7 @@ namespace Selivura
     {
         [SerializeField] private float _intensity = 5;
         CinemachineVirtualCamera _vcam;
-        private Timer _timer = new Timer(0,0);
+        private Timer _timer = new Timer(0, 0);
         private CinemachineBasicMultiChannelPerlin _noise;
         private void Awake()
         {
@@ -17,7 +17,7 @@ namespace Selivura
         }
         private void FixedUpdate()
         {
-            if(_timer.Expired)
+            if (_timer.Expired)
             {
                 _noise.m_AmplitudeGain = 0;
             }

@@ -9,7 +9,7 @@ namespace Selivura
         EffectPool _effectPool;
         private void Awake()
         {
-             FindFirstObjectByType<Injector>().Inject(this);
+            FindFirstObjectByType<Injector>().Inject(this);
         }
         public void Spawn()
         {
